@@ -34,7 +34,7 @@ public class ClientControllerTest {
 	/*	this.mvc.perform(get("/api/clients")
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().json("[]"));
+				.andExpect(content().json("[]"));llllllll
 				// the above checks that the content is an empty JSON list*/
 		assert(true);
 	}
