@@ -10,10 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.spring.demo.controllers.client.ClientController;
 import com.example.spring.demo.services.client.ClientService;
-
-
 
 
 
