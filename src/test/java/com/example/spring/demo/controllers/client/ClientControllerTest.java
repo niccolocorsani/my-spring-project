@@ -1,6 +1,5 @@
 package com.example.spring.demo.controllers.client;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.spring.demo.controllers.client.ClientController;
 import com.example.spring.demo.services.client.ClientService;
 
 
@@ -46,6 +44,7 @@ public class ClientControllerTest {
 				new Client(1L, "Marco", "Rossi"),
 				new Client(2L, "Francesco", "bianchi")
 			));
+			
 		this.mvc.perform(get("/api/clients")
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
