@@ -2,6 +2,9 @@ package com.example.spring.demo.model.appoitmnent;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.example.spring.demo.model.client.Client;
 
 @Entity
 public class Appointment {
@@ -9,24 +12,10 @@ public class Appointment {
 
 	@Id
 	private Long id;
-	private Long clientId;
-	private Long consultantId;
 
-	public Long getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(Long clientId) {
-		this.clientId = clientId;
-	}
-
-	public Long getConsultantId() {
-		return consultantId;
-	}
-
-	public void setConsultantId(Long consultantId) {
-		this.consultantId = consultantId;
-	}
+	@ManyToOne
+	private Client client;
+	
 
 
 	public void setId(Long id) {
