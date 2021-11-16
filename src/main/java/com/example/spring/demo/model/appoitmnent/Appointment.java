@@ -16,7 +16,6 @@ public class Appointment {
 	@ManyToOne
 	private Client client;
 	
-	
 
 
 	public void setId(Long id) {
