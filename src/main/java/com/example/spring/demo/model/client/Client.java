@@ -23,11 +23,10 @@ public class Client {
 
 	private String lastName;
 	
-    @OneToMany(mappedBy = "Client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Appointment> appointments;
 	
-
-
+    
 	public Client(Long id, String firstName, String lastName) {
 		
 		this.id = id;
