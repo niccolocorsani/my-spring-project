@@ -64,10 +64,10 @@ public class ClientControllerTest {
 		this.mvc.perform(get("/api/clients")
 				.accept(MediaType.APPLICATION_JSON_VALUE))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].id", is(1L)))
+				.andExpect(jsonPath("$[0].id", is(1)))
 				.andExpect(jsonPath("$[0].firstName", is("Marco")))
 				.andExpect(jsonPath("$[0].lastName", is("Rossi")))
-				.andExpect(jsonPath("$[1].id", is(2L)))
+				.andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].firstName", is("Francesco")));
 	}
 }
