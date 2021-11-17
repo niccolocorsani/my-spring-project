@@ -31,6 +31,7 @@ public class ConsultantService {
 		return consultantRepository.save(replacement);
 	}
 
+	
 	public void deleteUserById(Long idConsultant) {
 		consultantRepository.delete(consultantRepository.getById(idConsultant));		
 	}
