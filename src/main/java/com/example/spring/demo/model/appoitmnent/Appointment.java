@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
