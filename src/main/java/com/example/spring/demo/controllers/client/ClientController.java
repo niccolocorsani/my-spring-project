@@ -26,15 +26,15 @@ public class ClientController {
 	}
 
 	
-    @GetMapping(value = "/{idUser}")
-    public Client getUser(@PathVariable("idUser") Long idClient) {
+    @GetMapping(value = "/{idClient}")
+    public Client getClient(@PathVariable("idClient") Long idClient) {
         Client client = this.clientService.getClientById(idClient);
         return client;
     }
     
     
-    @PutMapping( value = "/putUser")
-    public Client putUser(@RequestBody Client client) {
+    @PutMapping( value = "/putClient")
+    public Client putClient(@RequestBody Client client) {
         this.clientService.insertNewClient(client);
         return client;
     }
@@ -42,8 +42,8 @@ public class ClientController {
     
     
     
-    @PutMapping( value = "/updateUser")
-    public Client updateUser(@RequestBody Client client) {
+    @PutMapping( value = "/updateClient")
+    public Client updateClient(@RequestBody Client client) {
         this.clientService.updateClientById(client.getId(), client);
         return client;
     }
@@ -52,7 +52,7 @@ public class ClientController {
     
     @DeleteMapping("/{idClient}")
     public void deleteCallCenter(@PathVariable Long idClient) {
-        this.clientService.deleteUserById(idClient);
+        this.clientService.deleteClientById(idClient);
     }
     
     
