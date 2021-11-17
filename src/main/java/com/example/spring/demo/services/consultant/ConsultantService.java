@@ -32,7 +32,7 @@ public class ConsultantService {
 	}
 
 	
-	public void deleteUserById(Long idConsultant) {
+	public void deleteConsultantById(Long idConsultant) {
 		consultantRepository.delete(consultantRepository.getById(idConsultant));		
 	}
 }

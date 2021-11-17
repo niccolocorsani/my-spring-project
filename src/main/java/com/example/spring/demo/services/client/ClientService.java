@@ -34,8 +34,11 @@ public class ClientService {
 		return clientRepository.save(replacement);
 	}
 
-	public void deleteUserById(Long idClient) {
+
+
+	public void deleteClientById(Long idClient) {
 		clientRepository.delete(clientRepository.getById(idClient));		
+		
 	}
 
 }

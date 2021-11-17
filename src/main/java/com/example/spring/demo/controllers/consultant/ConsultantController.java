@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.spring.demo.model.consultant.Consultant;
+import com.example.spring.demo.model.consultant.Consultant;
+import com.example.spring.demo.services.consultant.ConsultantService;
 import com.example.spring.demo.services.consultant.ConsultantService;
 
 @RestController
 public class ConsultantController {
-
 	
 	
-
 	@Autowired
 	private ConsultantService consultantService;
 
@@ -30,14 +30,14 @@ public class ConsultantController {
 
 	
     @GetMapping(value = "/{idConsultant}")
-    public Consultant getUser(@PathVariable("idConsultant") Long idConsultant) {
+    public Consultant getConsultant(@PathVariable("idConsultant") Long idConsultant) {
         Consultant consultant = this.consultantService.getConsultantById(idConsultant);
         return consultant;
     }
     
     
     @PutMapping( value = "/putConsultant")
-    public Consultant putUser(@RequestBody Consultant consultant) {
+    public Consultant putConsultant(@RequestBody Consultant consultant) {
         this.consultantService.insertNewConsultant(consultant);
         return consultant;
     }
@@ -46,7 +46,7 @@ public class ConsultantController {
     
     
     @PutMapping( value = "/updateConsultant")
-    public Consultant updateUser(@RequestBody Consultant consultant) {
+    public Consultant updateConsultant(@RequestBody Consultant consultant) {
         this.consultantService.updateConsultantById(consultant.getId(), consultant);
         return consultant;
     }
@@ -55,8 +55,9 @@ public class ConsultantController {
     
     @DeleteMapping("/{idConsultant}")
     public void deleteCallCenter(@PathVariable Long idConsultant) {
-        this.consultantService.deleteUserById(idConsultant);
+        this.consultantService.deleteConsultantById(idConsultant);
     }
+    
     
     
 }
