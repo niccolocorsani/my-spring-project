@@ -1,8 +1,6 @@
 package com.example.spring.demo.model.appoitmnent;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
@@ -12,6 +10,7 @@ public class Appointment {
 
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne

@@ -3,11 +3,7 @@ package com.example.spring.demo.model.client;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
 
@@ -16,7 +12,7 @@ import com.example.spring.demo.model.appoitmnent.Appointment;
 public class Client {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String firstName;
