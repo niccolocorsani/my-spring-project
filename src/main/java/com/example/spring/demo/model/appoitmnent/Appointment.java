@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.example.spring.demo.model.client.Client;
+import com.example.spring.demo.model.consultant.Consultant;
 
 @Entity
 public class Appointment {
@@ -16,7 +17,8 @@ public class Appointment {
 	@ManyToOne
 	private Client client;
 	
-
+	@ManyToOne
+	private Consultant consultant;
 
 	public void setId(Long id) {
 		this.id = id;

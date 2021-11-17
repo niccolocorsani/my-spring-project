@@ -44,7 +44,7 @@ spring:
           time_zone: CET
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   datasource:
     url: jdbc:mysql://localhost:3306/spring-app?createDatabaseIfNotExist=true
     username: operations
