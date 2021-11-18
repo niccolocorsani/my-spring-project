@@ -2,9 +2,7 @@ package com.example.spring.demo.unit.repositories.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.List;
 
