@@ -19,7 +19,7 @@ import com.example.spring.demo.repositories.client.ClientRepository;
 @DataJpaTest
 @RunWith(SpringRunner.class)
 public class ClientRepositoryTest {
-/*
+
 	@Autowired
 	private ClientRepository repository;
 
@@ -51,5 +51,5 @@ public class ClientRepositoryTest {
 		Client found = repository.findByFirstName("test");
 		assertThat(found).isEqualTo(saved);
 	}
-*/
+
 }
