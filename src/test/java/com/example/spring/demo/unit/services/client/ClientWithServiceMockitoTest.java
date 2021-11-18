@@ -30,7 +30,10 @@ public class ClientWithServiceMockitoTest {
 
 	@Test
 	public void test_getAllClients() {
-		Client client1 = new Client(1L, "Marco", "Rossi");
+		Client client1 = new Client();
+		client1.setId(1L);
+		client1.setFirstName("Marco");
+		client1.setLastName("Rossi");
 		Client client2 = new Client(2L, "Francesco", "Bianchi");
 		when(clientRepository.findAll()).thenReturn(asList(client1, client2));
 		assertThat(clientService.getAllClients()).containsExactly(client1, client2);
