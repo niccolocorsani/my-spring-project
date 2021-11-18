@@ -3,7 +3,7 @@ package com.example.spring.demo.unit.services.consultant;
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.repositories.consultant.ConsultantRepository;
 import com.example.spring.demo.services.consultant.ConsultantService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
