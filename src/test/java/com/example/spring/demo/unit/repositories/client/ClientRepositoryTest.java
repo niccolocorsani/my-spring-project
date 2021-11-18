@@ -2,9 +2,14 @@ package com.example.spring.demo.unit.repositories.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.example.spring.demo.model.appoitmnent.Appointment;
+import com.example.spring.demo.model.consultant.Consultant;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +30,7 @@ public class ClientRepositoryTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
+
 
 	@Test
 	public void firstLearningTest() {

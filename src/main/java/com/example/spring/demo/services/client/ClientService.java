@@ -2,6 +2,7 @@ package com.example.spring.demo.services.client;
 
 import java.util.List;
 
+import com.example.spring.demo.model.appoitmnent.Appointment;
 import org.springframework.stereotype.Service;
 
 import com.example.spring.demo.model.client.Client;
@@ -34,11 +35,8 @@ public class ClientService {
 		return clientRepository.save(replacement);
 	}
 
-
-
 	public void deleteClientById(Long idClient) {
 		clientRepository.delete(clientRepository.getById(idClient));		
 		
 	}
-
 }
