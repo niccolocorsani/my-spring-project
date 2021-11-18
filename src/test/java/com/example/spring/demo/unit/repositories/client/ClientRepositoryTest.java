@@ -19,7 +19,7 @@ import com.example.spring.demo.repositories.client.ClientRepository;
 @DataJpaTest
 @RunWith(SpringRunner.class)
 public class ClientRepositoryTest {
-/*
+
 	@Autowired
 	private ClientRepository repository;
 
@@ -36,8 +36,7 @@ public class ClientRepositoryTest {
 
 	@Test
 	public void secondLearningTest() {
-		// we can add a record with the TestEntityManager
-		// and read it back with the Repository
+
 		Client client = new Client(null, "test", "");
 		Client saved = entityManager.persistFlushFind(client);
 		Collection<Client> clients = repository.findAll();
@@ -51,5 +50,5 @@ public class ClientRepositoryTest {
 		Client found = repository.findByFirstName("test");
 		assertThat(found).isEqualTo(saved);
 	}
-*/
+
 }
