@@ -19,7 +19,7 @@ spring:
           time_zone: CET
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
 
   datasource:
     url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;
