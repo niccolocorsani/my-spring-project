@@ -51,9 +51,9 @@ public class RepositoriesTest {
         appointment.setClient(client);
         Assertions.assertNull(appointmentRepository.findAll().get(0).getClient());
         appointmentRepository.save(appointment);
-  //      System.err.println(appointmentRepository.findAll().get(0).getConsultant().getFirstName());
+        System.err.println(appointmentRepository.findAll().get(0).getConsultant().getFirstName());
         Assertions.assertNotNull(appointmentRepository.findAll().get(0).getClient());
-       // Assertions.assertNotNull(appointmentRepository.findAll().get(0).getConsultant());
+        Assertions.assertNotNull(appointmentRepository.findAll().get(0).getConsultant());
 //        Assertions.assertEquals(appointmentRepository.findAll().get(0).getClient().getFirstName(),"Francesco");
 
     }
