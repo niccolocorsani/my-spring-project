@@ -2,9 +2,12 @@ package com.example.spring.demo.services.consultant;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.repositories.consultant.ConsultantRepository;
 
+@Service
 public class ConsultantService {
 
 	
