@@ -36,8 +36,7 @@ public class ClientRepositoryTest {
 
 	@Test
 	public void secondLearningTest() {
-		// we can add a record with the TestEntityManager
-		// and read it back with the Repository
+
 		Client client = new Client(null, "test", "");
 		Client saved = entityManager.persistFlushFind(client);
 		Collection<Client> clients = repository.findAll();
