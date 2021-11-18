@@ -7,7 +7,7 @@ spring:
   application:
     name: spring-app
   profiles:
-    active: none
+    active: MySQL
 
 ---
 spring:

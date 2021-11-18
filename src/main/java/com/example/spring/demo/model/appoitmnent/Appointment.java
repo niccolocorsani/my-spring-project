@@ -36,7 +36,17 @@ public class Appointment {
 	@ManyToOne
 	private Consultant consultant;
 
+	public Appointment() {
+	}
 
+	public Appointment(Long id, java.sql.Date date, Time startTime, Time endTime, Client client, Consultant consultant) {
+		this.id = id;
+		Date = date;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.client = client;
+		this.consultant = consultant;
+	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -45,4 +55,46 @@ public class Appointment {
 	public Long getId() {
 		return id;
 	}
+
+	public java.sql.Date getDate() {
+		return Date;
+	}
+
+	public void setDate(java.sql.Date date) {
+		Date = date;
+	}
+
+	public Time getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Time startTime) {
+		this.startTime = startTime;
+	}
+
+	public Time getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Time endTime) {
+		this.endTime = endTime;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Consultant getConsultant() {
+		return consultant;
+	}
+
+	public void setConsultant(Consultant consultant) {
+		this.consultant = consultant;
+	}
+
+
 }
