@@ -17,7 +17,7 @@ import com.example.spring.demo.services.client.ClientService;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Import(ClientService.class)
-public class ClientSeriveRepositoryIT {
+public class ClientServiceRepositoryIT {
 
 	@Autowired
 	private ClientService clientService;
