@@ -39,14 +39,7 @@ public class Appointment {
 	public Appointment() {
 	}
 
-	public Appointment(Long id, java.sql.Date date, Time startTime, Time endTime, Client client, Consultant consultant) {
-		this.id = id;
-		Date = date;
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.client = client;
-		this.consultant = consultant;
-	}
+
 
 	public void setId(Long id) {
 		this.id = id;

@@ -53,7 +53,7 @@ public class ConsultantController {
     
     
     @DeleteMapping("/{idConsultant}")
-    public void deleteCallCenter(@PathVariable Long idConsultant) {
+    public void deleteConsultant(@PathVariable Long idConsultant) {
         this.consultantService.deleteConsultantById(idConsultant);
     }
     

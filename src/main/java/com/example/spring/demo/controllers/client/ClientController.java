@@ -39,9 +39,7 @@ public class ClientController {
         return client;
     }
     
-    
-    
-    
+
     @PutMapping( value = "/updateClient")
     public Client updateClient(@RequestBody Client client) {
         this.clientService.updateClientById(client.getId(), client);
@@ -50,7 +48,7 @@ public class ClientController {
     
     
     @DeleteMapping("/{idClient}")
-    public void deleteCallCenter(@PathVariable Long idClient) {
+    public void deleteClientCenter(@PathVariable Long idClient) {
         this.clientService.deleteClientById(idClient);
     }
     

@@ -1,6 +1,7 @@
 package com.example.spring.demo.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -37,4 +38,12 @@ public class ClientSeriveRepositoryIT {
 		assertThat(clientRepository.findById(saved.getId())).contains(modified);
 	}
 
+
+	@Test
+
+	public void testServiceDeleteClientByID() {
+		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
+		clientService.deleteClientById(1L);
+		assertNull(clientService.getClientById(saved.getId()));
+	}
 }

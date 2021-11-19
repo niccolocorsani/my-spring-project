@@ -2,7 +2,7 @@ package com.example.spring.demo.unit.controllers.consultant;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -10,6 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.spring.demo.model.client.Client;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +61,84 @@ public class ConsultantControllerTest {
 				.andExpect(jsonPath("$[0].lastName", is("Rossi"))).andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].firstName", is("Francesco")));
 	}
+
+
+
+
+	@Test
+	public void testControllerGetConsultant() throws Exception {
+
+		this.mvc.perform(get("/1")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
+
+
+	@Test
+	public void testControllerPutConsultant() throws Exception {
+
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultant.setFirstName("Marco");
+		ObjectMapper mapper = new ObjectMapper();
+		String consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/putConsultant")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("id", is(1)))
+				.andExpect(jsonPath("firstName", is("Marco")));
+
+	}
+
+
+	@Test
+	public void testControllerPutAndUpdateConsultant() throws Exception {
+
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultant.setFirstName("Marco");
+		ObjectMapper mapper = new ObjectMapper();
+		String consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/putConsultant"));
+		consultant.setFirstName("Andrea");
+		consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/updateConsultant")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("id", is(1)))
+				.andExpect(jsonPath("firstName", is("Andrea")));
+
+	}
+
+
+	@Test
+	public void testControllerPutAndDeleteConsultant() throws Exception {
+
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultant.setFirstName("Marco");
+		ObjectMapper mapper = new ObjectMapper();
+		String consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/putConsultant")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+
+
+		this.mvc.perform(delete("/1"))
+				.andExpect(status().isOk());
+
+	}
+
+
+
+
+
+
+
 }
