@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ClientController.class)
-public class ClientControllerTest {
+ class ClientControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -35,7 +35,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testAllClientsEmpty() throws Exception {
+     void testAllClientsEmpty() throws Exception {
         System.err.println("oo");
 
         this.mvc.perform(get("/api/clients")
@@ -45,7 +45,7 @@ public class ClientControllerTest {
     }
 
     @Test
-    public void testAllClientsNotEmpty() throws Exception {
+     void testAllClientsNotEmpty() throws Exception {
 
         List<Client> clients = new ArrayList<>();
         clients.add(new Client(1L, "Marco", "Rossi"));
@@ -67,7 +67,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerGetClient() throws Exception {
+     void testControllerGetClient() throws Exception {
 
         this.mvc.perform(get("/1")
                 .accept(MediaType.APPLICATION_JSON))
@@ -76,7 +76,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerPutClient() throws Exception {
+     void testControllerPutClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
@@ -95,7 +95,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerPutAndUpdateClient() throws Exception {
+     void testControllerPutAndUpdateClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
@@ -117,7 +117,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerPutAndDeleteClient() throws Exception {
+     void testControllerPutAndDeleteClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);

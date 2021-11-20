@@ -28,7 +28,7 @@ class ConsultantRepositoryTest {
 	private TestEntityManager entityManager;
 
 	@Test
-	public void firstLearningTest() {
+	 void firstLearningTest() {
 		Consultant consultant = new Consultant(null, "test", "");
 		Consultant saved = repository.save(consultant);
 		Collection<Consultant> consultants = repository.findAll();
@@ -36,7 +36,7 @@ class ConsultantRepositoryTest {
 	}
 
 	@Test
-	public void secondLearningTest() {
+	 void secondLearningTest() {
 
 		Consultant consultant = new Consultant(null, "test", "");
 		Consultant saved = entityManager.persistFlushFind(consultant);
@@ -45,7 +45,7 @@ class ConsultantRepositoryTest {
 	}
 
 	@Test
-	public void test_findByConsultantName() {
+	 void test_findByConsultantName() {
 		Consultant saved = entityManager.
 			persistFlushFind(new Consultant(null, "test", ""));
 		Consultant found = repository.findByFirstName("test");

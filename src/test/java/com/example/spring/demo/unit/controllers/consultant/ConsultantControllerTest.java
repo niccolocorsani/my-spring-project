@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ConsultantController.class)
 @Import(ConsultantController.class)
-public class ConsultantControllerTest {
+ class ConsultantControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
@@ -34,7 +34,7 @@ public class ConsultantControllerTest {
 	private ConsultantService conultantService;
 
 	@Test
-	public void testAllConsultantsEmpty() throws Exception {
+	 void testAllConsultantsEmpty() throws Exception {
 
 		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json("[]"));
@@ -43,7 +43,7 @@ public class ConsultantControllerTest {
 	}
 
 	@Test
-	public void testAllConsultantsNotEmpty() throws Exception {
+	 void testAllConsultantsNotEmpty() throws Exception {
 
 		List<Consultant> conultants = new ArrayList<>();
 		conultants.add(new Consultant(1L, "Marco", "Rossi"));
@@ -62,7 +62,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerGetConsultant() throws Exception {
+	 void testControllerGetConsultant() throws Exception {
 
 		this.mvc.perform(get("/1")
 				.accept(MediaType.APPLICATION_JSON))
@@ -71,7 +71,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerPutConsultant() throws Exception {
+	 void testControllerPutConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
@@ -90,7 +90,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerPutAndUpdateConsultant() throws Exception {
+	 void testControllerPutAndUpdateConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
@@ -112,7 +112,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerPutAndDeleteConsultant() throws Exception {
+	 void testControllerPutAndDeleteConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);

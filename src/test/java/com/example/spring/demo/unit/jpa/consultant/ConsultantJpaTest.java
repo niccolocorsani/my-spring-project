@@ -12,13 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class ConsultantJpaTest {
+ class ConsultantJpaTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
 
 	@Test
-	public void testJpaMapping() {
+	 void testJpaMapping() {
 		Consultant saved = entityManager.persistFlushFind(new Consultant(null, "test", ""));
 		assertThat(saved.getFirstName()).isEqualTo("test");
 		assertThat(saved.getId()).isNotNull();
