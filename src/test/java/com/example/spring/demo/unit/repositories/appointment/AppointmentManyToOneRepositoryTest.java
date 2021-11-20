@@ -35,7 +35,6 @@ public class AppointmentManyToOneRepositoryTest {
     @Autowired
     private ClientRepository clientRepository;
 
-    private Client client;
 
 
 
@@ -43,8 +42,7 @@ public class AppointmentManyToOneRepositoryTest {
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
     void getAppointmentWithConsultantTest() throws InterruptedException {
 
-     /*   Consultant consultant = new Consultant();
-        consultant.setId(1L);
+        Consultant consultant = new Consultant();
         consultant.setFirstName("Marco");
         consultant.setLastName("Bianchi");
         Appointment  appointment = new Appointment();
@@ -59,7 +57,7 @@ public class AppointmentManyToOneRepositoryTest {
         List appointments = this.appointmentRepository.findAll();
         Consultant cons = this.appointmentRepository.findAll().get(0).getConsultant();
         assertNotNull(this.appointmentRepository.findAll().get(0).getConsultant());
-*/
+
     }
 
     @Test
@@ -67,7 +65,7 @@ public class AppointmentManyToOneRepositoryTest {
     void getAppointmentWithClientTest() {
 
         Appointment  appointment = new Appointment();
-        client = new Client(1L, "Francesco", "Renga");
+        Client client = new Client(1L, "Francesco", "Renga");
         appointment = new Appointment();
         appointment.setId(1L);
         appointment.setDate(Date.valueOf("2021-03-10"));
