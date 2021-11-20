@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class AppointmentManyToOneRepositoryTest {
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -36,9 +35,7 @@ public class AppointmentManyToOneRepositoryTest {
     @Autowired
     private ClientRepository clientRepository;
 
-    private Consultant consultant;
     private Client client;
-    private Appointment appointment;
 
 
 
@@ -46,19 +43,17 @@ public class AppointmentManyToOneRepositoryTest {
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
     void getAppointmentWithConsultantTest() throws InterruptedException {
 
+        Consultant consultant = new Consultant();
+        consultant.setId(1L);
+        consultant.setFirstName("Marco");
+        consultant.setLastName("Bianchi");
+        Appointment  appointment = new Appointment();
+        appointment.setId(1L);
+        appointment.setDate(Date.valueOf("2021-03-10"));
+        appointment.setStartTime(Time.valueOf("10:00:00"));
+        appointment.setEndTime(Time.valueOf("11:00:00"));
 
-
-        this.consultant = new Consultant();
-        this.consultant.setId(1L);
-        this.consultant.setFirstName("Marco");
-        this.consultant.setLastName("Bianchi");
-        this.appointment = new Appointment();
-        this.appointment.setId(1L);
-        this.appointment.setDate(Date.valueOf("2021-03-10"));
-        this.appointment.setStartTime(Time.valueOf("10:00:00"));
-        this.appointment.setEndTime(Time.valueOf("11:00:00"));
-
-       consultantRepository.save(this.consultant);
+        consultantRepository.save(this.consultant);
         this.appointment.setConsultant(this.consultant);
         this.appointmentRepository.save(this.appointment);
         List appointments = this.appointmentRepository.findAll();
