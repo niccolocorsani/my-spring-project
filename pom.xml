@@ -102,26 +102,15 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*Application.*</exclude>
-                        <exclude>**/model/*</exclude>
-                        <!-- The following is just to avoid the instrumentation error
-                          (when running EmployeeWebControllerTest) due to the
-                          HtmlUnit class StyleAttributes$Definition
-                          (method too large) -->
-                        <exclude>**/htmlunit/*</exclude>
-                    </excludes>
-                </configuration>
                 <executions>
                     <execution>
+                        <id>generate-code-coverage-report</id>
+                        <phase>verify</phase>
                         <goals>
-                            <!-- binds by default to the phase "initialize" -->
-                            <goal>prepare-agent</goal>
-                            <!-- binds by default to the phase "verify" -->
                             <goal>report</goal>
                         </goals>
                     </execution>
+           
                 </executions>
             </plugin>
         </plugins>
