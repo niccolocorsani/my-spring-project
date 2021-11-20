@@ -1,12 +1,10 @@
 package com.example.spring.demo.services.client;
 
-import java.util.List;
-
-import com.example.spring.demo.model.appoitmnent.Appointment;
-import org.springframework.stereotype.Service;
-
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.repositories.client.ClientRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service

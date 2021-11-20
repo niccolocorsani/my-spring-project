@@ -1,16 +1,8 @@
 package com.example.spring.demo.unit.controllers.consultant;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.spring.demo.model.client.Client;
+import com.example.spring.demo.controllers.consultant.ConsultantController;
+import com.example.spring.demo.model.consultant.Consultant;
+import com.example.spring.demo.services.consultant.ConsultantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,14 +14,18 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.spring.demo.controllers.consultant.ConsultantController;
-import com.example.spring.demo.model.consultant.Consultant;
-import com.example.spring.demo.services.consultant.ConsultantService;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ConsultantController.class)
 @Import(ConsultantController.class)
-public class ConsultantControllerTest {
+ class ConsultantControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
@@ -38,7 +34,7 @@ public class ConsultantControllerTest {
 	private ConsultantService conultantService;
 
 	@Test
-	public void testAllConsultantsEmpty() throws Exception {
+	 void testAllConsultantsEmpty() throws Exception {
 
 		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json("[]"));
@@ -47,7 +43,7 @@ public class ConsultantControllerTest {
 	}
 
 	@Test
-	public void testAllConsultantsNotEmpty() throws Exception {
+	 void testAllConsultantsNotEmpty() throws Exception {
 
 		List<Consultant> conultants = new ArrayList<>();
 		conultants.add(new Consultant(1L, "Marco", "Rossi"));
@@ -66,7 +62,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerGetConsultant() throws Exception {
+	 void testControllerGetConsultant() throws Exception {
 
 		this.mvc.perform(get("/1")
 				.accept(MediaType.APPLICATION_JSON))
@@ -75,7 +71,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerPutConsultant() throws Exception {
+	 void testControllerPutConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
@@ -94,7 +90,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerPutAndUpdateConsultant() throws Exception {
+	 void testControllerPutAndUpdateConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
@@ -116,7 +112,7 @@ public class ConsultantControllerTest {
 
 
 	@Test
-	public void testControllerPutAndDeleteConsultant() throws Exception {
+	 void testControllerPutAndDeleteConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);

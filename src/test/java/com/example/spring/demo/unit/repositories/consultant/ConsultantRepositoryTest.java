@@ -1,10 +1,7 @@
 package com.example.spring.demo.unit.repositories.consultant;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Collection;
-
+import com.example.spring.demo.model.consultant.Consultant;
+import com.example.spring.demo.repositories.consultant.ConsultantRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +9,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.spring.demo.model.consultant.Consultant;
-import com.example.spring.demo.repositories.consultant.ConsultantRepository;
+import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 
@@ -30,7 +28,7 @@ class ConsultantRepositoryTest {
 	private TestEntityManager entityManager;
 
 	@Test
-	public void firstLearningTest() {
+	 void firstLearningTest() {
 		Consultant consultant = new Consultant(null, "test", "");
 		Consultant saved = repository.save(consultant);
 		Collection<Consultant> consultants = repository.findAll();
@@ -38,7 +36,7 @@ class ConsultantRepositoryTest {
 	}
 
 	@Test
-	public void secondLearningTest() {
+	 void secondLearningTest() {
 
 		Consultant consultant = new Consultant(null, "test", "");
 		Consultant saved = entityManager.persistFlushFind(consultant);
@@ -47,7 +45,7 @@ class ConsultantRepositoryTest {
 	}
 
 	@Test
-	public void test_findByConsultantName() {
+	 void test_findByConsultantName() {
 		Consultant saved = entityManager.
 			persistFlushFind(new Consultant(null, "test", ""));
 		Consultant found = repository.findByFirstName("test");

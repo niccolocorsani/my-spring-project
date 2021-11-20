@@ -5,8 +5,6 @@ import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.repositories.appointment.AppointmentRepository;
 import com.example.spring.demo.repositories.client.ClientRepository;
-
-
 import com.example.spring.demo.repositories.consultant.ConsultantRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,14 +17,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.sql.Date;
 import java.sql.Time;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class RepositoriesTest {
+ class RepositoriesTest {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -42,7 +38,7 @@ public class RepositoriesTest {
 
 
     @BeforeEach
-    public void serUp() {
+     void serUp() {
 
         this.client = new Client(1L, "Francesco", "Renga");
         this.consultant = new Consultant();
@@ -59,7 +55,7 @@ public class RepositoriesTest {
 
    /* @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-    public void getAppointmentWithConsultantTest() {
+     void getAppointmentWithConsultantTest() {
         this.consultantRepository.save(this.consultant);
         this.appointmentRepository.save(this.appointment);
         assertNull(this.appointmentRepository.findAll().get(0).getConsultant());
@@ -73,7 +69,7 @@ public class RepositoriesTest {
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD) // questa annotazione serve a pulire il contesto alla fine di ogni metodo
-    public void getAppointmentWithClientTest() {
+     void getAppointmentWithClientTest() {
 
 
         clientRepository.save(client);
@@ -90,7 +86,7 @@ public class RepositoriesTest {
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-    public void getConsultantWithAppointmentTest() {
+     void getConsultantWithAppointmentTest() {
 
         this.appointmentRepository.save(this.appointment);
         this.consultant.setAppointments(this.appointmentRepository.findAll());
@@ -102,7 +98,7 @@ public class RepositoriesTest {
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-    public void getClientWithAppointmentTest() {
+     void getClientWithAppointmentTest() {
 
         this.appointmentRepository.save(this.appointment);
         this.client.setAppointments(this.appointmentRepository.findAll());

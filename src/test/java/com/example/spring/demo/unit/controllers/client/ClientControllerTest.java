@@ -1,16 +1,10 @@
 package com.example.spring.demo.unit.controllers.client;
 
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.example.spring.demo.controllers.client.ClientController;
+import com.example.spring.demo.model.client.Client;
+import com.example.spring.demo.services.client.ClientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +14,18 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.spring.demo.controllers.client.ClientController;
-import com.example.spring.demo.model.client.Client;
-import com.example.spring.demo.services.client.ClientService;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ClientController.class)
-public class ClientControllerTest {
+ class ClientControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -37,7 +35,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testAllClientsEmpty() throws Exception {
+     void testAllClientsEmpty() throws Exception {
         System.err.println("oo");
 
         this.mvc.perform(get("/api/clients")
@@ -47,7 +45,7 @@ public class ClientControllerTest {
     }
 
     @Test
-    public void testAllClientsNotEmpty() throws Exception {
+     void testAllClientsNotEmpty() throws Exception {
 
         List<Client> clients = new ArrayList<>();
         clients.add(new Client(1L, "Marco", "Rossi"));
@@ -69,7 +67,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerGetClient() throws Exception {
+     void testControllerGetClient() throws Exception {
 
         this.mvc.perform(get("/1")
                 .accept(MediaType.APPLICATION_JSON))
@@ -78,7 +76,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerPutClient() throws Exception {
+     void testControllerPutClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
@@ -97,7 +95,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerPutAndUpdateClient() throws Exception {
+     void testControllerPutAndUpdateClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
@@ -119,7 +117,7 @@ public class ClientControllerTest {
 
 
     @Test
-    public void testControllerPutAndDeleteClient() throws Exception {
+     void testControllerPutAndDeleteClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
