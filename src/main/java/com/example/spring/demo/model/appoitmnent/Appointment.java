@@ -16,7 +16,7 @@ public class Appointment {
 	private Long id;
 
 	@Column
-	private Date Date;
+	private Date date;
 
 	@Column
 	private Time startTime;
@@ -31,6 +31,7 @@ public class Appointment {
 	private Consultant consultant;
 
 	public Appointment() {
+		// Do nothing because aim is to provide an empty constructor.
 	}
 
 
@@ -44,11 +45,11 @@ public class Appointment {
 	}
 
 	public java.sql.Date getDate() {
-		return Date;
+		return date;
 	}
 
 	public void setDate(java.sql.Date date) {
-		Date = date;
+		date = date;
 	}
 
 	public Time getStartTime() {
