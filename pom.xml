@@ -105,16 +105,17 @@
                 <executions>
                     <execution>
                         <goals>
-                            <!-- binds by default to the phase "initialize" -->
-
                             <goal>prepare-agent</goal>
-
-                            <!-- binds by default to the phase "verify" -->
-
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-code-coverage-report</id>
+                        <phase>test</phase>
+                        <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
-
+            
                 </executions>
             </plugin>
         </plugins>
