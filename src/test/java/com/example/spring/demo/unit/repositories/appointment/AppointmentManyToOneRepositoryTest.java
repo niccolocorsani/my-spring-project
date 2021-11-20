@@ -53,9 +53,9 @@ public class AppointmentManyToOneRepositoryTest {
         appointment.setStartTime(Time.valueOf("10:00:00"));
         appointment.setEndTime(Time.valueOf("11:00:00"));
 
-        consultantRepository.save(this.consultant);
-        this.appointment.setConsultant(this.consultant);
-        this.appointmentRepository.save(this.appointment);
+        consultantRepository.save(consultant);
+        appointment.setConsultant(consultant);
+        this.appointmentRepository.save(appointment);
         List appointments = this.appointmentRepository.findAll();
         Consultant cons = this.appointmentRepository.findAll().get(0).getConsultant();
         assertNotNull(this.appointmentRepository.findAll().get(0).getConsultant());
@@ -66,18 +66,19 @@ public class AppointmentManyToOneRepositoryTest {
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
     void getAppointmentWithClientTest() {
 
-        this.client = new Client(1L, "Francesco", "Renga");
-        this.appointment = new Appointment();
-        this.appointment.setId(1L);
-        this.appointment.setDate(Date.valueOf("2021-03-10"));
-        this.appointment.setStartTime(Time.valueOf("10:00:00"));
-        this.appointment.setEndTime(Time.valueOf("11:00:00"));
-        this.clientRepository.save(client);
-        this.appointmentRepository.save(this.appointment);
-        this.appointment.setClient(client);
-        assertNull(this.appointmentRepository.findAll().get(0).getClient());
-        this.appointmentRepository.save(this.appointment);
-        assertNotNull(this.appointmentRepository.findAll().get(0).getClient());
+        Appointment  appointment = new Appointment();
+        client = new Client(1L, "Francesco", "Renga");
+        appointment = new Appointment();
+        appointment.setId(1L);
+        appointment.setDate(Date.valueOf("2021-03-10"));
+        appointment.setStartTime(Time.valueOf("10:00:00"));
+        appointment.setEndTime(Time.valueOf("11:00:00"));
+        clientRepository.save(client);
+        appointmentRepository.save(appointment);
+        appointment.setClient(client);
+        assertNull(appointmentRepository.findAll().get(0).getClient());
+        appointmentRepository.save(appointment);
+        assertNotNull(appointmentRepository.findAll().get(0).getClient());
 
 
     }
