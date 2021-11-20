@@ -1,4 +1,4 @@
-package com.example.spring.demo.unit.repositories.all;
+package com.example.spring.demo.unit.repositories.appointment;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
 import com.example.spring.demo.model.client.Client;
@@ -16,30 +16,38 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Date;
 import java.sql.Time;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
- class RepositoriesTest {
-
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+public class AppointmentManyToOneRepositoryTest {
     @Autowired
     private AppointmentRepository appointmentRepository;
-    @Autowired
-    private ClientRepository clientRepository;
+
     @Autowired
     private ConsultantRepository consultantRepository;
 
+    @Autowired
+    private ClientRepository clientRepository;
 
     private Consultant consultant;
     private Client client;
     private Appointment appointment;
 
 
-    @BeforeEach
-     void serUp() {
 
-        this.client = new Client(1L, "Francesco", "Renga");
+    @Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+    void getAppointmentWithConsultantTest() throws InterruptedException {
+
+
+
         this.consultant = new Consultant();
         this.consultant.setId(1L);
         this.consultant.setFirstName("Marco");
@@ -49,55 +57,33 @@ import static org.junit.jupiter.api.Assertions.*;
         this.appointment.setDate(Date.valueOf("2021-03-10"));
         this.appointment.setStartTime(Time.valueOf("10:00:00"));
         this.appointment.setEndTime(Time.valueOf("11:00:00"));
+
+       consultantRepository.save(this.consultant);
+        this.appointment.setConsultant(this.consultant);
+        this.appointmentRepository.save(this.appointment);
+        List appointments = this.appointmentRepository.findAll();
+        Consultant cons = this.appointmentRepository.findAll().get(0).getConsultant();
+        assertNotNull(this.appointmentRepository.findAll().get(0).getConsultant());
+
     }
-
-
-
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-    // questa annotazione serve a pulire il contesto alla fine di ogni metodo
-     void getAppointmentWithClientTest() {
+    void getAppointmentWithClientTest() {
 
-
-        clientRepository.save(client);
+        this.client = new Client(1L, "Francesco", "Renga");
+        this.appointment = new Appointment();
+        this.appointment.setId(1L);
+        this.appointment.setDate(Date.valueOf("2021-03-10"));
+        this.appointment.setStartTime(Time.valueOf("10:00:00"));
+        this.appointment.setEndTime(Time.valueOf("11:00:00"));
+        this.clientRepository.save(client);
         this.appointmentRepository.save(this.appointment);
         this.appointment.setClient(client);
         assertNull(this.appointmentRepository.findAll().get(0).getClient());
         this.appointmentRepository.save(this.appointment);
         assertNotNull(this.appointmentRepository.findAll().get(0).getClient());
 
-
-    }
-
-
-    @Test
-    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-     void getConsultantWithAppointmentTest() {
-
-        this.appointmentRepository.saveAndFlush(this.appointment);
-        this.consultant.setAppointments(this.appointmentRepository.findAll());
-
-        this.consultantRepository.save(this.consultant);
-        assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
-
-    }
-
-
-    @Test
-    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-     void getClientWithAppointmentTest() {
-
-        this.appointmentRepository.save(this.appointment);
-
-        this.client.setAppointments(this.appointmentRepository.findAll());
-        this.clientRepository.save(this.client);
-        this.appointment.setDate(Date.valueOf("2021-03-10"));
-
-        assertNotNull(this.clientRepository.findAll().get(0).getAppointments().get(0));
-        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getDate(), Date.valueOf("2021-03-10"));
-        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getStartTime(), Time.valueOf("10:00:00"));
-        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getEndTime(), Time.valueOf("11:00:00"));
 
     }
 
