@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ConsultantController.class)
 @Import(ConsultantController.class)
- class ConsultantControllerTest {
+public class ConsultantControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 	private ConsultantService conultantService;
 
 	@Test
-	 void testAllConsultantsEmpty() throws Exception {
+	public void testAllConsultantsEmpty() throws Exception {
 
 		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json("[]"));
@@ -43,7 +43,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 	}
 
 	@Test
-	 void testAllConsultantsNotEmpty() throws Exception {
+	public void testAllConsultantsNotEmpty() throws Exception {
 
 		List<Consultant> conultants = new ArrayList<>();
 		conultants.add(new Consultant(1L, "Marco", "Rossi"));
@@ -62,7 +62,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 	@Test
-	 void testControllerGetConsultant() throws Exception {
+	public void testControllerGetConsultant() throws Exception {
 
 		this.mvc.perform(get("/1")
 				.accept(MediaType.APPLICATION_JSON))
@@ -71,7 +71,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 	@Test
-	 void testControllerPutConsultant() throws Exception {
+	public void testControllerPutConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
@@ -90,7 +90,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 	@Test
-	 void testControllerPutAndUpdateConsultant() throws Exception {
+	public void testControllerPutAndUpdateConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
@@ -112,7 +112,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 	@Test
-	 void testControllerPutAndDeleteConsultant() throws Exception {
+	public void testControllerPutAndDeleteConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);

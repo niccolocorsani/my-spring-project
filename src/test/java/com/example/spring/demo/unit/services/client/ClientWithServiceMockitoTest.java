@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
- class ClientWithServiceMockitoTest {
+public class ClientWithServiceMockitoTest {
 
 	@Mock
 	private ClientRepository clientRepository;
@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 	private ClientService clientService;
 
 	@Test
-	 void test_getAllClients() {
+	public void test_getAllClients() {
 		Client client1 = new Client();
 		client1.setId(1L);
 		client1.setFirstName("Marco");
@@ -36,7 +36,7 @@ import static org.mockito.Mockito.when;
 	}
 
 	@Test
-	 void test_getClientById_found() {
+	public void test_getClientById_found() {
 		Client client = new Client(1L, "Marco", "Rossi");
 		when(clientRepository.findById(1L)).thenReturn(Optional.of(client));
 		assertThat(clientService.getClientById(1L)).isSameAs(client);

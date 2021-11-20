@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ClientController.class)
- class ClientControllerTest {
+public class ClientControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
     @Test
-     void testAllClientsEmpty() throws Exception {
+    public void testAllClientsEmpty() throws Exception {
         System.err.println("oo");
 
         this.mvc.perform(get("/api/clients")
@@ -45,7 +45,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     }
 
     @Test
-     void testAllClientsNotEmpty() throws Exception {
+    public void testAllClientsNotEmpty() throws Exception {
 
         List<Client> clients = new ArrayList<>();
         clients.add(new Client(1L, "Marco", "Rossi"));
@@ -67,7 +67,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
     @Test
-     void testControllerGetClient() throws Exception {
+    public void testControllerGetClient() throws Exception {
 
         this.mvc.perform(get("/1")
                 .accept(MediaType.APPLICATION_JSON))
@@ -76,7 +76,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
     @Test
-     void testControllerPutClient() throws Exception {
+    public void testControllerPutClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
@@ -95,7 +95,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
     @Test
-     void testControllerPutAndUpdateClient() throws Exception {
+    public void testControllerPutAndUpdateClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);
@@ -117,7 +117,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
     @Test
-     void testControllerPutAndDeleteClient() throws Exception {
+    public void testControllerPutAndDeleteClient() throws Exception {
 
         Client client = new Client();
         client.setId(1L);

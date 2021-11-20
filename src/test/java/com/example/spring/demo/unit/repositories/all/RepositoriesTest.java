@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
- class RepositoriesTest {
+public class RepositoriesTest {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -38,7 +38,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
     @BeforeEach
-     void serUp() {
+    public void serUp() {
 
         this.client = new Client(1L, "Francesco", "Renga");
         this.consultant = new Consultant();
@@ -55,7 +55,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
    /* @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-     void getAppointmentWithConsultantTest() {
+    public void getAppointmentWithConsultantTest() {
         this.consultantRepository.save(this.consultant);
         this.appointmentRepository.save(this.appointment);
         assertNull(this.appointmentRepository.findAll().get(0).getConsultant());
@@ -66,10 +66,10 @@ import static org.junit.jupiter.api.Assertions.*;
     }*/
 
 
-
     @Test
-    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD) // questa annotazione serve a pulire il contesto alla fine di ogni metodo
-     void getAppointmentWithClientTest() {
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+    // questa annotazione serve a pulire il contesto alla fine di ogni metodo
+    public void getAppointmentWithClientTest() {
 
 
         clientRepository.save(client);
@@ -83,13 +83,13 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
 
-
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-     void getConsultantWithAppointmentTest() {
+    public void getConsultantWithAppointmentTest() {
 
-        this.appointmentRepository.save(this.appointment);
+        this.appointmentRepository.saveAndFlush(this.appointment);
         this.consultant.setAppointments(this.appointmentRepository.findAll());
+
         this.consultantRepository.save(this.consultant);
         assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
 
@@ -98,18 +98,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-     void getClientWithAppointmentTest() {
+    public void getClientWithAppointmentTest() {
 
         this.appointmentRepository.save(this.appointment);
+
         this.client.setAppointments(this.appointmentRepository.findAll());
         this.clientRepository.save(this.client);
+        this.appointment.setDate(Date.valueOf("2021-03-10"));
+
         assertNotNull(this.clientRepository.findAll().get(0).getAppointments().get(0));
-        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getDate(),Date.valueOf("2021-03-10"));
-        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getStartTime(),Time.valueOf("10:00:00"));
-        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getEndTime(),Time.valueOf("11:00:00"));
+        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getDate(), Date.valueOf("2021-03-10"));
+        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getStartTime(), Time.valueOf("10:00:00"));
+        assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getEndTime(), Time.valueOf("11:00:00"));
 
     }
-
 
 
 }

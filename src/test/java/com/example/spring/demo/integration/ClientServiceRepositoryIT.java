@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Import(ClientService.class)
- class ClientServiceRepositoryIT {
+public class ClientServiceRepositoryIT {
 
 	@Autowired
 	private ClientService clientService;
@@ -25,13 +25,13 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 	private ClientRepository clientRepository;
 
 	@Test
-	 void testServiceCanInsertIntoRepository() {
+	public void testServiceCanInsertIntoRepository() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
 		assertThat(clientRepository.findById(saved.getId())).isPresent();
 	}
 
 	@Test
-	 void testServiceCanUpdateRepository() {
+	public void testServiceCanUpdateRepository() {
 		Client saved = clientRepository.save(new Client(1L, "Marco", "Rossi"));
 		Client modified = clientService.updateClientById(saved.getId(), new Client(saved.getId(), "modified", ""));
 		assertThat(clientRepository.findById(saved.getId())).contains(modified);
@@ -40,7 +40,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 	@Test
 
-	 void testServiceDeleteClientByID() {
+	public void testServiceDeleteClientByID() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
 		clientService.deleteClientById(1L);
 		assertNull(clientService.getClientById(saved.getId()));

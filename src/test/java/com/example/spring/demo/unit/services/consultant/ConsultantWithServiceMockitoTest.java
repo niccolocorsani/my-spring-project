@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 
 
 @RunWith(MockitoJUnitRunner.class)
- class ConsultantWithServiceMockitoTest {
+public class ConsultantWithServiceMockitoTest {
 
 	@Mock
 	private ConsultantRepository consultantRepository;
@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 	private ConsultantService consultantService;
 
 	@Test
-	 void test_getAllConsultants() {
+	public void test_getAllConsultants() {
 		Consultant consultant1 = new Consultant(1L, "Marco", "Rossi");
 		Consultant consultant2 = new Consultant(2L, "Francesco", "Bianchi");
 		when(consultantRepository.findAll()).thenReturn(asList(consultant1, consultant2));
@@ -35,7 +35,7 @@ import static org.mockito.Mockito.when;
 	}
 
 	@Test
-	 void test_getConsultantById_found() {
+	public void test_getConsultantById_found() {
 		Consultant consultant = new Consultant(1L, "Marco", "Rossi");
 		when(consultantRepository.findById(1L)).thenReturn(Optional.of(consultant));
 		assertThat(consultantService.getConsultantById(1L)).isSameAs(consultant);

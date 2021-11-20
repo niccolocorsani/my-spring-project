@@ -49,7 +49,7 @@ public class Appointment {
 	}
 
 	public void setDate(java.sql.Date date) {
-		date = date;
+		this.date = date;
 	}
 
 	public Time getStartTime() {

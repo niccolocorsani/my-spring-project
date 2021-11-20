@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
- class ClientRepositoryTest {
+public class ClientRepositoryTest {
 
 	@Autowired
 	private ClientRepository repository;
@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 	@Test
-	 void firstLearningTest() {
+	public void firstLearningTest() {
 		Client client = new Client(null, "test", "");
 		Client saved = repository.save(client);
 		Collection<Client> clients = repository.findAll();
@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 	}
 
 	@Test
-	 void secondLearningTest() {
+	public void secondLearningTest() {
 
 		Client client = new Client(null, "test", "");
 		Client saved = entityManager.persistFlushFind(client);
@@ -43,7 +43,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 	}
 
 	@Test
-	 void test_findByClientName() {
+	public void test_findByClientName() {
 		Client saved = entityManager.
 			persistFlushFind(new Client(null, "test", ""));
 		Client found = repository.findByFirstName("test");
