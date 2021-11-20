@@ -35,9 +35,6 @@ public class AppointmentManyToOneRepositoryTest {
     @Autowired
     private ClientRepository clientRepository;
 
-
-
-
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
     void getAppointmentWithConsultantTest() throws InterruptedException {
