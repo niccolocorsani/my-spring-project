@@ -111,14 +111,14 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+               
                     <execution>
-                        <id>generate-code-coverage-report</id>
-                        <phase>test</phase>
+                        <id>generate-code-coverage-report2</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
-           
                 </executions>
             </plugin>
 
