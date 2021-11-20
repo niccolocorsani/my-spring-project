@@ -67,8 +67,7 @@ class ClientConsulantOneToManyRepositoriyTest {
         assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
 
     }
-
-
+    
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
     void getClientWithAppointmentTest() {
