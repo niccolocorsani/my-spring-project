@@ -111,7 +111,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-               
+
                     <execution>
                         <id>generate-code-coverage-report2</id>
                         <phase>verify</phase>
