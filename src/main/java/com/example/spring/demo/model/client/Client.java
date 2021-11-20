@@ -1,8 +1,5 @@
 package com.example.spring.demo.model.client;
-
-
 import com.example.spring.demo.model.appoitmnent.Appointment;
-
 import javax.persistence.*;
 import java.util.List;
 

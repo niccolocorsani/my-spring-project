@@ -11,6 +11,7 @@ class MySpringProjectApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assert(true);
 	}
 
 }

@@ -22,8 +22,7 @@ public class ConsultantController {
 	
     @GetMapping(value = "/{idConsultant}")
     public Consultant getConsultant(@PathVariable("idConsultant") Long idConsultant) {
-        Consultant consultant = this.consultantService.getConsultantById(idConsultant);
-        return consultant;
+        return this.consultantService.getConsultantById(idConsultant);
     }
     
     

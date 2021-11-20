@@ -22,8 +22,7 @@ public class ClientController {
 	
     @GetMapping(value = "/{idClient}")
     public Client getClient(@PathVariable("idClient") Long idClient) {
-        Client client = this.clientService.getClientById(idClient);
-        return client;
+        return  this.clientService.getClientById(idClient);
     }
     
     
@@ -45,8 +44,6 @@ public class ClientController {
     public void deleteClientCenter(@PathVariable Long idClient) {
         this.clientService.deleteClientById(idClient);
     }
-    
-    
-       
+
     
 }
