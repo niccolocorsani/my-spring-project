@@ -1,8 +1,16 @@
 package com.example.spring.demo.unit.repositories.client;
 
+<<<<<<< HEAD
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Collection;
+
+import org.junit.Test;
+=======
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.repositories.client.ClientRepository;
 import org.junit.jupiter.api.Test;
+>>>>>>> dc0f3daa3f61cbb3d7eb2ebb5694a4691336e6f0
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
