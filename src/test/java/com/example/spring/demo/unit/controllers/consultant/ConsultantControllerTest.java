@@ -1,6 +1,7 @@
 package com.example.spring.demo.unit.controllers.consultant;
 
 import com.example.spring.demo.controllers.consultant.ConsultantController;
+import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.services.consultant.ConsultantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,11 +14,13 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -31,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 	private MockMvc mvc;
 
 	@MockBean
-	private ConsultantService conultantService;
+	private ConsultantService consultantService;
 
 	@Test
 	 void testAllConsultantsEmpty() throws Exception {
@@ -45,12 +48,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 	@Test
 	 void testAllConsultantsNotEmpty() throws Exception {
 
-		List<Consultant> conultants = new ArrayList<>();
-		conultants.add(new Consultant(1L, "Marco", "Rossi"));
-		conultants.add(new Consultant(2L, "Francesco", ""));
+		List<Consultant> consultants = new ArrayList<>();
+		consultants.add(new Consultant(1L, "Marco", "Rossi"));
+		consultants.add(new Consultant(2L, "Francesco", ""));
 		System.err.println("oo");
 
-		when(conultantService.getAllConsultants()).thenReturn(conultants);
+		when(consultantService.getAllConsultants()).thenReturn(consultants);
 
 		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is(1))).andExpect(jsonPath("$[0].firstName", is("Marco")))
@@ -59,15 +62,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 	}
 
 
-
-
 	@Test
-	 void testControllerGetConsultant() throws Exception {
+	void testControllerGetConsultant() throws Exception {
 
-		this.mvc.perform(get("/1")
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+		Consultant c  = new Consultant(1L, "Marco", "Rossi");
+		when(this.consultantService.getConsultantById(1L)).thenReturn(c);
+
+		MvcResult result = this.mvc.perform(get("/1").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn();
+		System.err.println(result.getResponse().getContentAsString());
+		String json =  result.getResponse().getContentAsString();
+		Consultant consultant = new ObjectMapper().readValue(json, Consultant.class);
+		assertEquals(consultant.getFirstName(), c.getFirstName());
+		assertEquals(consultant.getLastName(), c.getLastName());
+		assertEquals(consultant.getId(), c.getId());
 	}
+
+
 
 
 	@Test
