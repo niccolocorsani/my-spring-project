@@ -1,16 +1,10 @@
 package com.example.spring.demo.unit.controllers.consultant;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
+import com.example.spring.demo.controllers.consultant.ConsultantController;
+import com.example.spring.demo.model.consultant.Consultant;
+import com.example.spring.demo.services.consultant.ConsultantService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -20,14 +14,18 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example.spring.demo.controllers.consultant.ConsultantController;
-import com.example.spring.demo.model.consultant.Consultant;
-import com.example.spring.demo.services.consultant.ConsultantService;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ConsultantController.class)
 @Import(ConsultantController.class)
-public class ConsultantControllerTest {
+ class ConsultantControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
@@ -36,7 +34,7 @@ public class ConsultantControllerTest {
 	private ConsultantService conultantService;
 
 	@Test
-	public void testAllConsultantsEmpty() throws Exception {
+	 void testAllConsultantsEmpty() throws Exception {
 
 		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json("[]"));
@@ -45,7 +43,7 @@ public class ConsultantControllerTest {
 	}
 
 	@Test
-	public void testAllConsultantsNotEmpty() throws Exception {
+	 void testAllConsultantsNotEmpty() throws Exception {
 
 		List<Consultant> conultants = new ArrayList<>();
 		conultants.add(new Consultant(1L, "Marco", "Rossi"));
@@ -59,4 +57,84 @@ public class ConsultantControllerTest {
 				.andExpect(jsonPath("$[0].lastName", is("Rossi"))).andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].firstName", is("Francesco")));
 	}
+
+
+
+
+	@Test
+	 void testControllerGetConsultant() throws Exception {
+
+		this.mvc.perform(get("/1")
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
+
+
+	@Test
+	 void testControllerPutConsultant() throws Exception {
+
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultant.setFirstName("Marco");
+		ObjectMapper mapper = new ObjectMapper();
+		String consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/putConsultant")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("id", is(1)))
+				.andExpect(jsonPath("firstName", is("Marco")));
+
+	}
+
+
+	@Test
+	 void testControllerPutAndUpdateConsultant() throws Exception {
+
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultant.setFirstName("Marco");
+		ObjectMapper mapper = new ObjectMapper();
+		String consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/putConsultant"));
+		consultant.setFirstName("Andrea");
+		consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/updateConsultant")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("id", is(1)))
+				.andExpect(jsonPath("firstName", is("Andrea")));
+
+	}
+
+
+	@Test
+	 void testControllerPutAndDeleteConsultant() throws Exception {
+
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultant.setFirstName("Marco");
+		ObjectMapper mapper = new ObjectMapper();
+		String consultantString = mapper.writeValueAsString(consultant);
+		this.mvc.perform(put("/putConsultant")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString)
+				.accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+
+
+		this.mvc.perform(delete("/1"))
+				.andExpect(status().isOk());
+
+	}
+
+
+
+
+
+
+
 }
