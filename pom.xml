@@ -61,10 +61,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -98,12 +95,9 @@
                     </execution>
                 </executions>
             </plugin>
-
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-
                 <version>0.8.6</version>
                 <executions>
                     <execution>
@@ -111,7 +105,6 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-
                     <execution>
                         <id>generate-code-coverage-report2</id>
                         <phase>verify</phase>
@@ -121,9 +114,10 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+            </plugin>
         </plugins>
     </build>
-
-
 </project>

@@ -47,7 +47,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
     @Test
      void testAllClientsEmpty() throws Exception {
-        System.err.println("oo");
 
         this.mvc.perform(get("/api/clients")
                 .accept(MediaType.APPLICATION_JSON))
