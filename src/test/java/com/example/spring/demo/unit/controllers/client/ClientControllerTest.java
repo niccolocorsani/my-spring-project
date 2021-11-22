@@ -50,7 +50,7 @@ class ClientControllerTest {
 	@Test
 	void testAllClientsEmpty() throws Exception {
 
-		this.mvc.perform(get("/api/clients").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		this.mvc.perform(get("/client/api/clients").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(content().json("[]"));
 	}
 
@@ -63,7 +63,7 @@ class ClientControllerTest {
 
 		when(clientService.getAllClients()).thenReturn(clients);
 
-		this.mvc.perform(get("/api/clients").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		this.mvc.perform(get("/client/api/clients").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is(1))).andExpect(jsonPath("$[0].firstName", is("Marco")))
 				.andExpect(jsonPath("$[0].lastName", is("Rossi"))).andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].firstName", is("Francesco")));
@@ -75,7 +75,7 @@ class ClientControllerTest {
 		Client c = new Client(1L, "Marco", "Rossi");
 		when(clientService.getClientById(1L)).thenReturn(c);
 
-		MvcResult result = this.mvc.perform(get("/1").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+		MvcResult result = this.mvc.perform(get("/client/1").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andReturn();
 		String json = result.getResponse().getContentAsString();
 		Client client = new ObjectMapper().readValue(json, Client.class);
@@ -92,7 +92,7 @@ class ClientControllerTest {
 		client.setFirstName("Marco");
 		ObjectMapper mapper = new ObjectMapper();
 		String clientString = mapper.writeValueAsString(client);
-		this.mvc.perform(put("/putClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
+		this.mvc.perform(put("/client/putClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(jsonPath("id", is(1)))
 				.andExpect(jsonPath("firstName", is("Marco")));
 
@@ -106,10 +106,10 @@ class ClientControllerTest {
 		client.setFirstName("Marco");
 		ObjectMapper mapper = new ObjectMapper();
 		String clientString = mapper.writeValueAsString(client);
-		this.mvc.perform(put("/putClient"));
+		this.mvc.perform(put("/client/putClient"));
 		client.setFirstName("Andrea");
 		clientString = mapper.writeValueAsString(client);
-		this.mvc.perform(put("/updateClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
+		this.mvc.perform(put("/client/updateClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(jsonPath("id", is(1)))
 				.andExpect(jsonPath("firstName", is("Andrea")));
 
@@ -124,9 +124,9 @@ class ClientControllerTest {
 		client.setFirstName("Marco");
 		ObjectMapper mapper = new ObjectMapper();
 		String clientString = mapper.writeValueAsString(client);
-		this.mvc.perform(put("/putClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
+		this.mvc.perform(put("/client/putClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-		MvcResult result = this.mvc.perform(delete("/1")).andExpect(status().isOk()).andReturn();
+		MvcResult result = this.mvc.perform(delete("/client/1")).andExpect(status().isOk()).andReturn();
 		String json = null;
 		try {
 			json = result.getResponse().getContentAsString();

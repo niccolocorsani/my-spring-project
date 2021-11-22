@@ -34,7 +34,8 @@ public class ConsultantService {
 	}
 
 	
-	public void deleteConsultantById(Long idConsultant) {
-		consultantRepository.delete(consultantRepository.getById(idConsultant));		
+	public Consultant deleteConsultantById(Long idConsultant) {
+		consultantRepository.delete(consultantRepository.getById(idConsultant));
+		return null;		
 	}
 }
