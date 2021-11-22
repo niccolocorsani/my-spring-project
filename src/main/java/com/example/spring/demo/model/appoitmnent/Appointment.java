@@ -80,6 +80,10 @@ public class Appointment {
 		return consultant;
 	}
 
+
+
+
+
 	public void setConsultant(Consultant consultant) {
 		this.consultant = consultant;
 	}
