@@ -14,9 +14,6 @@ import java.util.Collection;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-
-
-
 @DataJpaTest
 @RunWith(SpringRunner.class)
 class ConsultantRepositoryTest {

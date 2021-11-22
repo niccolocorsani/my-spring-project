@@ -13,11 +13,16 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -25,116 +30,103 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = ConsultantController.class)
 @Import(ConsultantController.class)
- class ConsultantControllerTest {
+class ConsultantControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
 
 	@MockBean
-	private ConsultantService conultantService;
+	private ConsultantService consultantService;
 
 	@Test
-	 void testAllConsultantsEmpty() throws Exception {
+	void testAllConsultantsEmpty() throws Exception {
 
-		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(content().json("[]"));
+		this.mvc.perform(get("/consultant/api/consultants").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andExpect(content().json("[]"));
 		// the above checks that the content is an empty JSON list
 		assert (true);
 	}
 
 	@Test
-	 void testAllConsultantsNotEmpty() throws Exception {
+	void testAllConsultantsNotEmpty() throws Exception {
 
-		List<Consultant> conultants = new ArrayList<>();
-		conultants.add(new Consultant(1L, "Marco", "Rossi"));
-		conultants.add(new Consultant(2L, "Francesco", ""));
+		List<Consultant> consultants = new ArrayList<>();
+		consultants.add(new Consultant(1L, "Marco", "Rossi"));
+		consultants.add(new Consultant(2L, "Francesco", ""));
 		System.err.println("oo");
 
-		when(conultantService.getAllConsultants()).thenReturn(conultants);
+		when(consultantService.getAllConsultants()).thenReturn(consultants);
 
-		this.mvc.perform(get("/api/consultants").accept(MediaType.APPLICATION_JSON_VALUE)).andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].id", is(1))).andExpect(jsonPath("$[0].firstName", is("Marco")))
-				.andExpect(jsonPath("$[0].lastName", is("Rossi"))).andExpect(jsonPath("$[1].id", is(2)))
-				.andExpect(jsonPath("$[1].firstName", is("Francesco")));
+		this.mvc.perform(get("/consultant/api/consultants").accept(MediaType.APPLICATION_JSON_VALUE))
+				.andExpect(status().isOk()).andExpect(jsonPath("$[0].id", is(1)))
+				.andExpect(jsonPath("$[0].firstName", is("Marco"))).andExpect(jsonPath("$[0].lastName", is("Rossi")))
+				.andExpect(jsonPath("$[1].id", is(2))).andExpect(jsonPath("$[1].firstName", is("Francesco")));
 	}
 
-
-
-
 	@Test
-	 void testControllerGetConsultant() throws Exception {
+	void testControllerGetConsultant() throws Exception {
 
-		this.mvc.perform(get("/1")
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+		Consultant c = new Consultant(1L, "Marco", "Rossi");
+		when(this.consultantService.getConsultantById(1L)).thenReturn(c);
+		MvcResult result = this.mvc.perform(get("/consultant/1").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn();
+		String json = result.getResponse().getContentAsString();
+		Consultant consultant = new ObjectMapper().readValue(json, Consultant.class);
+		assertEquals(consultant.getFirstName(), c.getFirstName());
+		assertEquals(consultant.getLastName(), c.getLastName());
+		assertEquals(consultant.getId(), c.getId());
 	}
 
-
 	@Test
-	 void testControllerPutConsultant() throws Exception {
+	void testControllerPutConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
 		consultant.setFirstName("Marco");
 		ObjectMapper mapper = new ObjectMapper();
 		String consultantString = mapper.writeValueAsString(consultant);
-		this.mvc.perform(put("/putConsultant")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(consultantString)
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("id", is(1)))
-				.andExpect(jsonPath("firstName", is("Marco")));
+		this.mvc.perform(put("/consultant/putConsultant").contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("id", is(1))).andExpect(jsonPath("firstName", is("Marco")));
 
 	}
 
-
 	@Test
-	 void testControllerPutAndUpdateConsultant() throws Exception {
+	void testControllerPutAndUpdateConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
 		consultant.setFirstName("Marco");
 		ObjectMapper mapper = new ObjectMapper();
 		String consultantString = mapper.writeValueAsString(consultant);
-		this.mvc.perform(put("/putConsultant"));
+		this.mvc.perform(put("/consultant/putConsultant"));
 		consultant.setFirstName("Andrea");
 		consultantString = mapper.writeValueAsString(consultant);
-		this.mvc.perform(put("/updateConsultant")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(consultantString)
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("id", is(1)))
-				.andExpect(jsonPath("firstName", is("Andrea")));
+		this.mvc.perform(put("/consultant/updateConsultant").contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andExpect(jsonPath("id", is(1))).andExpect(jsonPath("firstName", is("Andrea")));
 
 	}
 
-
 	@Test
-	 void testControllerPutAndDeleteConsultant() throws Exception {
+	void testControllerPutAndDeleteConsultant() throws Exception {
 
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
 		consultant.setFirstName("Marco");
 		ObjectMapper mapper = new ObjectMapper();
 		String consultantString = mapper.writeValueAsString(consultant);
-		this.mvc.perform(put("/putConsultant")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(consultantString)
-				.accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+		this.mvc.perform(put("/consultant/putConsultant").contentType(MediaType.APPLICATION_JSON)
+				.content(consultantString).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		when(this.consultantService.deleteConsultantById(1L)).thenReturn(null);
+		MvcResult resultDelete = this.mvc.perform(delete("/consultant/1").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn();
+		String json = resultDelete.getResponse().getContentAsString();
 
-
-		this.mvc.perform(delete("/1"))
-				.andExpect(status().isOk());
+		Exception exception = assertThrows(Exception.class, () -> {
+			Consultant c = new ObjectMapper().readValue(json, Consultant.class);
+		});
 
 	}
-
-
-
-
-
-
 
 }
