@@ -1,11 +1,24 @@
 package com.example.spring.demo.integration;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-//@RunWith(SpringRunner.class)
-//@DataJpaTest
-//@Import(ClientService.class)
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.example.spring.demo.model.client.Client;
+import com.example.spring.demo.repositories.client.ClientRepository;
+import com.example.spring.demo.services.client.ClientService;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@Import(ClientService.class)
  class ClientServiceRepositoryIT {
-/*
+
 	@Autowired
 	private ClientService clientService;
 
@@ -33,5 +46,5 @@ package com.example.spring.demo.integration;
 		clientService.deleteClientById(1L);
 		assertNull(clientService.getClientById(saved.getId()));
 	}
-	*/
+	
 }
