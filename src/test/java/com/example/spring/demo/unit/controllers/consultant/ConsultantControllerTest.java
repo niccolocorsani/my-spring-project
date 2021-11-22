@@ -67,10 +67,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 		Consultant c  = new Consultant(1L, "Marco", "Rossi");
 		when(this.consultantService.getConsultantById(1L)).thenReturn(c);
-
 		MvcResult result = this.mvc.perform(get("/1").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();
-		System.err.println(result.getResponse().getContentAsString());
 		String json =  result.getResponse().getContentAsString();
 		Consultant consultant = new ObjectMapper().readValue(json, Consultant.class);
 		assertEquals(consultant.getFirstName(), c.getFirstName());

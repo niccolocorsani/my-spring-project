@@ -60,7 +60,7 @@ class ClientConsulantOneToManyRepositoriyTest {
 		this.consultantRepository.save(this.consultant);
 		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
 		Appointment a = this.consultantRepository.findAll().get(0).getAppointments().get(0);
-		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().contains(this.appointment));
+		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId() == 1L);
 
 	}
 

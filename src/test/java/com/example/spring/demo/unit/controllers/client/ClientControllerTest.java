@@ -1,7 +1,5 @@
 package com.example.spring.demo.unit.controllers.client;
 
-
-
 import static org.hamcrest.CoreMatchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,7 +14,6 @@ import com.example.spring.demo.services.client.ClientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import junit.framework.Assert;
-
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -72,20 +71,18 @@ class ClientControllerTest {
 
 	@Test
 	void testControllerGetClient() throws Exception {
-	
-		Client c  = new Client(1L, "Marco", "Rossi");
+
+		Client c = new Client(1L, "Marco", "Rossi");
 		when(clientService.getClientById(1L)).thenReturn(c);
-		
-		MvcResult result =this.mvc.perform(get("/1").accept(MediaType.APPLICATION_JSON))
-				  .andExpect(status().isOk()).andReturn();    
-          System.err.println(result.getResponse().getContentAsString());
-		  String json =  result.getResponse().getContentAsString();
-		  Client client = new ObjectMapper().readValue(json, Client.class);
-		  assertEquals(client.getFirstName(), c.getFirstName());
-		  assertEquals(client.getLastName(), c.getLastName());
-		  assertEquals(client.getId(), c.getId());
+
+		MvcResult result = this.mvc.perform(get("/1").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andReturn();
+		String json = result.getResponse().getContentAsString();
+		Client client = new ObjectMapper().readValue(json, Client.class);
+		assertEquals(client.getFirstName(), c.getFirstName());
+		assertEquals(client.getLastName(), c.getLastName());
+		assertEquals(client.getId(), c.getId());
 	}
-	
 
 	@Test
 	void testControllerPutClient() throws Exception {
@@ -121,6 +118,7 @@ class ClientControllerTest {
 	@Test
 	void testControllerPutAndDeleteClient() throws Exception {
 
+		//TODO
 		Client client = new Client();
 		client.setId(1L);
 		client.setFirstName("Marco");
@@ -128,8 +126,17 @@ class ClientControllerTest {
 		String clientString = mapper.writeValueAsString(client);
 		this.mvc.perform(put("/putClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
 				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		MvcResult result = this.mvc.perform(delete("/1")).andExpect(status().isOk()).andReturn();
+		String json = null;
+		try {
+			json = result.getResponse().getContentAsString();
+			System.err.println(json);
+			assertTrue(json.length()==0);
+		} catch (Exception e) {
+			System.out.println(json);
 
-		this.mvc.perform(delete("/1")).andExpect(status().isOk());
+			assertTrue(false);
+		}
 
 	}
 
