@@ -1,7 +1,11 @@
 package com.example.spring.demo.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -40,11 +44,13 @@ import com.example.spring.demo.services.client.ClientService;
 
 
 	@Test
-
 	 void testServiceDeleteClientByID() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
 		clientService.deleteClientById(1L);
-		assertNull(clientService.getClientById(saved.getId()));
+		assertNotEquals(clientService.getClientById(saved.getId()).getId(),1L);
+		//// TODO da finire che qui da problemi quando viene eseguito Pit Mutuation Testing
+    	////mettere blocco try catch dentro dove si genererebbe l'eccezione e in quel punto mettere un brakePoint
+
 	}
 	
 }
