@@ -118,7 +118,6 @@ class ClientControllerTest {
 	@Test
 	void testControllerPutAndDeleteClient() throws Exception {
 
-		//TODO
 		Client client = new Client();
 		client.setId(1L);
 		client.setFirstName("Marco");
