@@ -29,7 +29,7 @@ public class ConsultantService {
 	}
 
 	public Consultant updateConsultantById(long id, Consultant replacement) {
-		replacement.setId(id);
+
 		return consultantRepository.save(replacement);
 	}
 

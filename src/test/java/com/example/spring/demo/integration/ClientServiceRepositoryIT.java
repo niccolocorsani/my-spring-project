@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.spring.demo.model.client.Client;
@@ -30,12 +31,16 @@ import com.example.spring.demo.services.client.ClientService;
 	private ClientRepository clientRepository;
 
 	@Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+
 	 void testServiceCanInsertIntoRepository() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
 		assertThat(clientRepository.findById(saved.getId())).isPresent();
 	}
 
 	@Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+
 	 void testServiceCanUpdateRepository() {
 		Client saved = clientRepository.save(new Client(1L, "Marco", "Rossi"));
 		Client modified = clientService.updateClientById(saved.getId(), new Client(saved.getId(), "modified", ""));
@@ -44,13 +49,40 @@ import com.example.spring.demo.services.client.ClientService;
 
 
 	@Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+
 	 void testServiceDeleteClientByID() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
+        clientService.insertNewClient(saved);
 		clientService.deleteClientById(1L);
-		assertNotEquals(clientService.getClientById(saved.getId()).getId(),1L);
-		//// TODO da finire che qui da problemi quando viene eseguito Pit Mutuation Testing
-    	////mettere blocco try catch dentro dove si genererebbe l'eccezione e in quel punto mettere un brakePoint
+        assertNull(clientService.getClientById(saved.getId()));
+		
+	}
+	
+	
+	@Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 
+	void testServiceGetClientByID() {
+		Client client = new Client();
+		client.setId(1L);
+		clientService.insertNewClient(client);
+
+		clientService.getClientById(1L);
+		assertEquals(clientService.getClientById(client.getId()).getId(),1L);
+
+	}
+	
+	
+	
+	@Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+	 void testServiceGetAllClients() {
+		Client client = new Client();
+		client.setId(1L);
+		clientService.insertNewClient(client);
+		assertTrue(clientService.getAllClients().size()==1);
+		
 	}
 	
 }

@@ -1,7 +1,9 @@
 package com.example.spring.demo.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -46,12 +48,33 @@ import com.example.spring.demo.services.consultant.ConsultantService;
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
      void testServiceDeleteConsultantByID() {
-       // Consultant saved = consultantService.insertNewConsultant(new Consultant(1L, "Marco", "Rossi"));
-       // consultantService.deleteConsultantById(1L);
-        //assertNull(consultantService.getConsultantById(saved.getId()));
-		//// TODO da finire che qui da problemi quando viene eseguito Pit Mutuation Testing
-    	////mettere blocco try catch dentro dove si genererebbe l'eccezione e in quel punto mettere un brakePoint
-
+        Consultant saved = consultantService.insertNewConsultant(new Consultant(1L, "Marco", "Rossi"));
+        consultantService.insertNewConsultant(saved);
+        consultantService.deleteConsultantById(1L);
+         assertNull(consultantService.getConsultantById(saved.getId()));
+		
     }
 
+    
+    @Test
+    @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+     void testServiceGetConsultantByID() {
+        Consultant consultant = new Consultant();
+        consultant.setId(1L);
+        consultantService.insertNewConsultant(consultant);
+        
+        consultantService.getConsultantById(1L);
+         assertEquals(consultantService.getConsultantById(consultant.getId()).getId(),1L);
+		
+    }
+
+	@Test
+	@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+	void testServiceGetAllConsultants() {
+		Consultant consultant = new Consultant();
+		consultant.setId(1L);
+		consultantService.insertNewConsultant(consultant);
+		assertTrue(consultantService.getAllConsultants().size()==1);
+
+	}
 }

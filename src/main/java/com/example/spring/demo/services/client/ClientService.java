@@ -29,7 +29,6 @@ public class ClientService {
 	}
 
 	public Client updateClientById(long id, Client replacement) {
-		replacement.setId(id);
 		return clientRepository.save(replacement);
 	}
 
