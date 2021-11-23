@@ -50,7 +50,8 @@ import com.example.spring.demo.services.client.ClientService;
 		assertNotEquals(clientService.getClientById(saved.getId()).getId(),1L);
 		//// TODO da finire che qui da problemi quando viene eseguito Pit Mutuation Testing
     	////mettere blocco try catch dentro dove si genererebbe l'eccezione e in quel punto mettere un brakePoint
-
 	}
-	
 }
+
+
+
