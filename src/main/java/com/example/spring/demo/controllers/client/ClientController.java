@@ -55,12 +55,6 @@ public class ClientController {
 
 
 
-
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Client saveClient(@RequestBody Client client) {
-        this.clientService.insertNewClient(client);
-        System.err.println("putClient");
-        return client;
-    }
+    
     
 }
