@@ -3,7 +3,6 @@ package com.example.spring.demo.controllers.client;
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.services.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +17,6 @@ public class ClientController {
 
 	@GetMapping("/api/clients")
 	public List<Client> getAllClients() {
-        System.err.println("oooo");
 
         return clientService.getAllClients();
 	}
@@ -26,7 +24,6 @@ public class ClientController {
 	
     @GetMapping(value = "/{idClient}")
     public Client getClient(@PathVariable("idClient") Long idClient) {
-        System.err.println("oooo");
         return  this.clientService.getClientById(idClient);
     }
 
@@ -39,7 +36,6 @@ public class ClientController {
 
     @PutMapping( value = "/updateClient")
     public Client updateClient(@RequestBody Client client) {
-        System.err.println("oooo");
 
         this.clientService.updateClientById(client.getId(), client);
         return client;
@@ -48,19 +44,8 @@ public class ClientController {
     
     @DeleteMapping("/{idClient}")
     public void deleteClientCenter(@PathVariable Long idClient) {
-        System.err.println("oooo");
 
         this.clientService.deleteClientById(idClient);
     }
-
-
-
-
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Client saveClient(@RequestBody Client client) {
-        this.clientService.insertNewClient(client);
-        System.err.println("putClient");
-        return client;
-    }
-    
+   
 }

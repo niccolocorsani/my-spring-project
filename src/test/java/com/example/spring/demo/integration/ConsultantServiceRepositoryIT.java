@@ -61,10 +61,13 @@ import com.example.spring.demo.services.consultant.ConsultantService;
      void testServiceGetConsultantByID() {
         Consultant consultant = new Consultant();
         consultant.setId(1L);
+        consultant.setUserName("MarcoUser");
         consultantService.insertNewConsultant(consultant);
         
         consultantService.getConsultantById(1L);
          assertEquals(consultantService.getConsultantById(consultant.getId()).getId(),1L);
+ 		assertEquals(consultantService.getConsultantById(consultant.getId()).getUserName(),"MarcoUser");
+
 		
     }
 
