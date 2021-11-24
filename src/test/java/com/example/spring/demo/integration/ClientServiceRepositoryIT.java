@@ -36,6 +36,7 @@ import com.example.spring.demo.services.client.ClientService;
 	 void testServiceCanInsertIntoRepository() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
 		assertThat(clientRepository.findById(saved.getId())).isPresent();
+		
 	}
 
 	@Test
@@ -65,11 +66,13 @@ import com.example.spring.demo.services.client.ClientService;
 
 	void testServiceGetClientByID() {
 		Client client = new Client();
+		client.setUserName("MarcoUser");
 		client.setId(1L);
 		clientService.insertNewClient(client);
-
 		clientService.getClientById(1L);
 		assertEquals(clientService.getClientById(client.getId()).getId(),1L);
+		assertEquals(clientService.getClientById(client.getId()).getUserName(),"MarcoUser");
+
 
 	}
 	
