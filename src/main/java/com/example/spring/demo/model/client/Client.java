@@ -1,5 +1,7 @@
 package com.example.spring.demo.model.client;
 import com.example.spring.demo.model.appoitmnent.Appointment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,9 +16,13 @@ public class Client {
 	private String firstName;
 
 	private String lastName;
-	
 
-    
+	private String userName;
+
+
+
+	//TODO
+	@JsonIgnore
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Appointment> appointments;
 	
@@ -30,7 +36,9 @@ public class Client {
 	}
 
 
-	public Client() {}
+	public Client() {
+		// Do nothing because aim is to provide an empty constructor.
+	}
 	
 	public Long getId() {
 		return id;
@@ -60,7 +68,15 @@ public class Client {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public List<Appointment> getAppointments() {
 		return appointments;
 	}
@@ -70,7 +86,7 @@ public class Client {
 		this.appointments = appointments;
 	}
 
-	
+
 	
 	
 }

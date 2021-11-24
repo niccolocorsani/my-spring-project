@@ -7,7 +7,7 @@ spring:
   application:
     name: spring-app
   profiles:
-    active: none
+    active: MySQL2
 
 ---
 spring:
@@ -36,6 +36,9 @@ spring:
 
 ---
 spring:
+
+  #autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
   jpa:
     open-in-view: false #per levare warnig OpenSessionInView
     properties:
@@ -46,10 +49,12 @@ spring:
     hibernate:
       ddl-auto: create-drop
   datasource:
+    generate-ddl: true
+    show-sql: true
     url: jdbc:mysql://localhost:3306/spring-app?createDatabaseIfNotExist=true
     username: operations
     password: operations
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
   config:
     activate:
       on-profile: MySQL
@@ -74,5 +79,18 @@ spring:
     activate:
       on-profile: test1
 
-
-
+---
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-app?createDatabaseIfNotExist=true
+    username: operations
+    password: operations
+  jpa:
+    open-in-view: false #per levare warnig OpenSessionInView
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  config:
+    activate:
+      on-profile: MySQL2

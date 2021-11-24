@@ -30,6 +30,7 @@ import static org.mockito.Mockito.when;
 		client1.setId(1L);
 		client1.setFirstName("Marco");
 		client1.setLastName("Rossi");
+		client1.setUserName("marcoProva");
 		Client client2 = new Client(2L, "Francesco", "Bianchi");
 		when(clientRepository.findAll()).thenReturn(asList(client1, client2));
 		assertThat(clientService.getAllClients()).containsExactly(client1, client2);

@@ -34,8 +34,6 @@ public class Appointment {
 		// Do nothing because aim is to provide an empty constructor.
 	}
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -79,10 +77,6 @@ public class Appointment {
 	public Consultant getConsultant() {
 		return consultant;
 	}
-
-
-
-
 
 	public void setConsultant(Consultant consultant) {
 		this.consultant = consultant;

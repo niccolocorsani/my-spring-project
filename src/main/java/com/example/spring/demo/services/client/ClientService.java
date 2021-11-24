@@ -25,11 +25,12 @@ public class ClientService {
 	}
 
 	public Client insertNewClient(Client client) {
+		List<Client> c = clientRepository.findAll();
+		System.err.println(c.size());
 		return clientRepository.save(client);
 	}
 
 	public Client updateClientById(long id, Client replacement) {
-		replacement.setId(id);
 		return clientRepository.save(replacement);
 	}
 
@@ -38,4 +39,5 @@ public class ClientService {
 		return null;		
 		
 	}
+
 }

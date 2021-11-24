@@ -29,7 +29,9 @@ import static org.mockito.Mockito.when;
 	@Test
 	 void test_getAllConsultants() {
 		Consultant consultant1 = new Consultant(1L, "Marco", "Rossi");
+		consultant1.setUserName("MarcoProva");
 		Consultant consultant2 = new Consultant(2L, "Francesco", "Bianchi");
+		consultant2.setUserName("FrancescoProva");
 		when(consultantRepository.findAll()).thenReturn(asList(consultant1, consultant2));
 		assertThat(consultantService.getAllConsultants()).containsExactly(consultant1, consultant2);
 	}
