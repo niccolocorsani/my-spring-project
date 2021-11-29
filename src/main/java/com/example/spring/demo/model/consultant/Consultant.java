@@ -2,8 +2,10 @@ package com.example.spring.demo.model.consultant;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,11 +22,8 @@ public class Consultant {
 	private String userName;
 
 
-
-	//TODO
-	@JsonIgnore
-	@OneToMany(mappedBy = "consultant", cascade = CascadeType.ALL)
-	private List<Appointment> appointments;
+	@OneToMany(mappedBy = "consultant", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	private List<Appointment> appointments = new ArrayList<>();;
 	
 
 	public Consultant(Long id, String firstName, String lastName) {
@@ -33,8 +32,17 @@ public class Consultant {
 		this.firstName = firstName;
 		this.lastName = lastName;
 
-	}
 
+	}
+	public Consultant(Long id, String firstName, String lastName,List<Appointment> appointments) {
+
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.appointments = appointments;
+
+
+	}
 	public Consultant() {
 		// Do nothing because aim is to provide an empty constructor.
 	}
@@ -79,5 +87,10 @@ public class Consultant {
 		this.appointments = appointments;
 	}
 
+	public void addAppointment(Appointment appointment) {
+		this.appointments.add(appointment);
+		//best practice set in both direction
+		appointment.setConsultant(this);
+	}
 
 }

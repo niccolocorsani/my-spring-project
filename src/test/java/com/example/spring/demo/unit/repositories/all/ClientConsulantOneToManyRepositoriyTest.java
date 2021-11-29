@@ -37,7 +37,6 @@ class ClientConsulantOneToManyRepositoriyTest {
 
 	@BeforeEach
 	void serUp() {
-
 		this.client = new Client(1L, "Francesco", "Renga");
 		this.consultant = new Consultant();
 		this.consultant.setId(1L);
@@ -53,29 +52,24 @@ class ClientConsulantOneToManyRepositoriyTest {
 	@Test
 	@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 	void getConsultantWithAppointmentTest() {
-
 		this.appointmentRepository.saveAndFlush(this.appointment);
 		this.consultant.setAppointments(this.appointmentRepository.findAll());
-
 		this.consultantRepository.save(this.consultant);
 		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
 		Appointment a = this.consultantRepository.findAll().get(0).getAppointments().get(0);
 		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId() == 1L);
-
+		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getDate(),
+				Date.valueOf("2021-03-10"));
 	}
 
 	@Test
 	@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 	void getClientWithAppointmentTest() {
-
-		
-		
 		this.appointmentRepository.save(this.appointment);
-
 		this.client.setAppointments(this.appointmentRepository.findAll());
 		this.clientRepository.save(this.client);
 		this.appointment.setDate(Date.valueOf("2021-03-10"));
-
+		Appointment appointment = this.clientRepository.findAll().get(0).getAppointments().get(0);
 		assertNotNull(this.clientRepository.findAll().get(0).getAppointments().get(0));
 		assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getDate(),
 				Date.valueOf("2021-03-10"));
@@ -83,10 +77,9 @@ class ClientConsulantOneToManyRepositoriyTest {
 				Time.valueOf("10:00:00"));
 		assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getEndTime(),
 				Time.valueOf("11:00:00"));
-
 	}
 
-	
-	
-	
+
+
+
 }

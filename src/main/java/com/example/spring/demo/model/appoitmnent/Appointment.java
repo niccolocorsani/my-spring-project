@@ -2,10 +2,12 @@ package com.example.spring.demo.model.appoitmnent;
 
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+
 
 @Entity
 public class Appointment {
@@ -24,9 +26,11 @@ public class Appointment {
 	@Column
 	private Time endTime;
 
+	@JsonIgnore
 	@ManyToOne
 	private Client client;
-	
+
+	@JsonIgnore
 	@ManyToOne
 	private Consultant consultant;
 

@@ -1,8 +1,10 @@
 package com.example.spring.demo.unit.controllers.consultant;
 
 import com.example.spring.demo.controllers.consultant.ConsultantController;
+import com.example.spring.demo.model.appoitmnent.Appointment;
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.services.consultant.ConsultantService;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -63,10 +65,13 @@ class ConsultantControllerTest {
 				.andExpect(jsonPath("$[1].id", is(2))).andExpect(jsonPath("$[1].firstName", is("Francesco")));
 	}
 
+	
 	@Test
 	void testControllerGetConsultant() throws Exception {
 
 		Consultant c = new Consultant(1L, "Marco", "Rossi");
+		Appointment appointment = new Appointment();
+		c.addAppointment(appointment);
 		when(this.consultantService.getConsultantById(1L)).thenReturn(c);
 		MvcResult result = this.mvc.perform(get("/consultant/1").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();

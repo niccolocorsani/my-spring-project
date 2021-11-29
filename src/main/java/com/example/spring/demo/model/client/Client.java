@@ -1,8 +1,10 @@
 package com.example.spring.demo.model.client;
 import com.example.spring.demo.model.appoitmnent.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,19 +22,15 @@ public class Client {
 	private String userName;
 
 
-
-	//TODO
-	@JsonIgnore
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-	private List<Appointment> appointments;
-	
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL,fetch=FetchType.EAGER) ///necessario fetch eager perchè se si chiude la sessione del controller prima che si carichi da errore
+	private List<Appointment> appointments = new ArrayList<>();
 
 	public Client(Long id, String firstName, String lastName) {
 		
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		
+
 	}
 
 
@@ -81,12 +79,14 @@ public class Client {
 		return appointments;
 	}
 
-
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
 	}
 
 
-	
+	public void addAppointment(Appointment appointment) {
+		this.appointments.add(appointment);
+		appointment.setClient(this);
+	}
 	
 }

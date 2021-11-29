@@ -12,7 +12,7 @@ spring:
 ---
 spring:
   jpa:
-    open-in-view: false #per levare warnig OpenSessionInView
+    open-in-view: true #per levare warnig OpenSessionInView
     properties:
       hibernate:
         jdbc:
@@ -40,7 +40,7 @@ spring:
   #autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
 
   jpa:
-    open-in-view: false #per levare warnig OpenSessionInView
+    open-in-view: true #per levare warnig OpenSessionInView
     properties:
       hibernate:
         jdbc:
@@ -63,7 +63,7 @@ spring:
 
 spring:
   jpa:
-    open-in-view: false #per levare warnig OpenSessionInView
+    open-in-view: true #per levare warnig OpenSessionInView
     properties:
       hibernate:
         jdbc:
@@ -87,7 +87,7 @@ spring:
     username: operations
     password: operations
   jpa:
-    open-in-view: false #per levare warnig OpenSessionInView
+    open-in-view: true #per levare warnig OpenSessionInView
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true

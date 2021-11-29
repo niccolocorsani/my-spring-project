@@ -44,7 +44,6 @@ public class ClientController {
     
     @DeleteMapping("/{idClient}")
     public void deleteClientCenter(@PathVariable Long idClient) {
-
         this.clientService.deleteClientById(idClient);
     }
    
