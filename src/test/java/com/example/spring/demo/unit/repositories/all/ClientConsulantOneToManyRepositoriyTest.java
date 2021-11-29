@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,11 +51,10 @@ class ClientConsulantOneToManyRepositoriyTest {
 	@Test
 	@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 	void getConsultantWithAppointmentTest() {
-		this.appointmentRepository.saveAndFlush(this.appointment);
+		this.appointmentRepository.save(this.appointment);
 		this.consultant.setAppointments(this.appointmentRepository.findAll());
 		this.consultantRepository.save(this.consultant);
 		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
-		Appointment a = this.consultantRepository.findAll().get(0).getAppointments().get(0);
 		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId() == 1L);
 		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getDate(),
 				Date.valueOf("2021-03-10"));
@@ -69,7 +67,6 @@ class ClientConsulantOneToManyRepositoriyTest {
 		this.client.setAppointments(this.appointmentRepository.findAll());
 		this.clientRepository.save(this.client);
 		this.appointment.setDate(Date.valueOf("2021-03-10"));
-		Appointment appointment = this.clientRepository.findAll().get(0).getAppointments().get(0);
 		assertNotNull(this.clientRepository.findAll().get(0).getAppointments().get(0));
 		assertEquals(this.clientRepository.findAll().get(0).getAppointments().get(0).getDate(),
 				Date.valueOf("2021-03-10"));
@@ -80,6 +77,27 @@ class ClientConsulantOneToManyRepositoriyTest {
 	}
 
 
+	
 
+
+	
+	@Test
+	@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+	void getConsultantAddAppointmentTest() {
+	
+          this.consultant.addAppointment(appointment);
+          this.consultantRepository.save(consultant);
+		
+		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
+		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId() == 1L);
+		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getDate(),
+				Date.valueOf("2021-03-10"));
+		assertTrue(this.appointmentRepository.findAll().get(0).getConsultant().getId() == 1L);
+
+		
+	}
+	
+	
+	
 
 }
