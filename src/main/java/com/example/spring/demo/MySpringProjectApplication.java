@@ -1,10 +1,8 @@
 package com.example.spring.demo;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
-import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.repositories.appointment.AppointmentRepository;
-import com.example.spring.demo.repositories.client.ClientRepository;
 import com.example.spring.demo.repositories.consultant.ConsultantRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,14 +31,34 @@ public class MySpringProjectApplication {
             consultant.setLastName("Bianchi");
             consultant.setUserName("userName12");
             Appointment appointment = new Appointment();
-            appointment.setId(1L);
             appointment.setDate(Date.valueOf("2021-11-10"));
             appointment.setStartTime(Time.valueOf("10:00:00"));
             appointment.setEndTime(Time.valueOf("11:00:00"));
 
+
+
+            Appointment appointment1 = new Appointment();
+            appointment1.setDate(Date.valueOf("2021-11-11"));
+            appointment1.setStartTime(Time.valueOf("10:00:00"));
+            appointment1.setEndTime(Time.valueOf("11:00:00"));
+
+
+
+            Appointment appointment2 = new Appointment();
+            appointment2.setDate(Date.valueOf("2021-11-14"));
+            appointment2.setStartTime(Time.valueOf("10:00:00"));
+            appointment2.setEndTime(Time.valueOf("11:00:00"));
+
+
             appointmentRepository.save(appointment);
+            appointmentRepository.save(appointment1);
+            appointmentRepository.save(appointment2);
+
+
 
             consultant.addAppointment(appointment);
+            consultant.addAppointment(appointment1);
+            consultant.addAppointment(appointment2);
 
             List<Appointment> l = appointmentRepository.findAll();
 
