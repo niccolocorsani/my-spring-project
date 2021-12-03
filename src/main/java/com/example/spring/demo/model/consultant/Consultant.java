@@ -34,15 +34,7 @@ public class Consultant {
 
 
 	}
-	public Consultant(Long id, String firstName, String lastName,List<Appointment> appointments) {
 
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.appointments = appointments;
-
-
-	}
 	public Consultant() {
 		// Do nothing because aim is to provide an empty constructor.
 	}

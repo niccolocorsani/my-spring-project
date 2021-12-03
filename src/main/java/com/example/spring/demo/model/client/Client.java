@@ -84,9 +84,6 @@ public class Client {
 	}
 
 
-	public void addAppointment(Appointment appointment) {
-		this.appointments.add(appointment);
-		appointment.setClient(this);
-	}
+
 	
 }
