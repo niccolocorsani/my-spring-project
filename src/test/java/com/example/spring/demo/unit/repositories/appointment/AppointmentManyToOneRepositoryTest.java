@@ -50,8 +50,6 @@ public class AppointmentManyToOneRepositoryTest {
         consultantRepository.save(consultant);
         appointment.setConsultant(consultant);
         this.appointmentRepository.save(appointment);
-        List appointments = this.appointmentRepository.findAll();
-        Consultant cons = this.appointmentRepository.findAll().get(0).getConsultant();
         assertNotNull(this.appointmentRepository.findAll().get(0).getConsultant());
 
     }

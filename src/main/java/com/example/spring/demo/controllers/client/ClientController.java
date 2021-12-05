@@ -3,10 +3,8 @@ package com.example.spring.demo.controllers.client;
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.services.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin

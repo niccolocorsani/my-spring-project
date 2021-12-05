@@ -1,18 +1,8 @@
 package com.example.spring.demo;
 
-import com.example.spring.demo.model.appoitmnent.Appointment;
-import com.example.spring.demo.model.consultant.Consultant;
-import com.example.spring.demo.repositories.appointment.AppointmentRepository;
-import com.example.spring.demo.repositories.consultant.ConsultantRepository;
-import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.sql.Date;
-import java.sql.Time;
-import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
 public class MySpringProjectApplication {
