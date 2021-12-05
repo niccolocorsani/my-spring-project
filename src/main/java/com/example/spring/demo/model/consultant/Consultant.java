@@ -1,8 +1,6 @@
 package com.example.spring.demo.model.consultant;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
