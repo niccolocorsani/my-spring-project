@@ -1,7 +1,6 @@
 package com.example.spring.demo.model.client;
 import com.example.spring.demo.model.appoitmnent.Appointment;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@CheckRegularExperssion
 	private String firstName;
 
 	private String lastName;

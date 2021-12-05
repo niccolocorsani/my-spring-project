@@ -6,7 +6,6 @@ import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.repositories.appointment.AppointmentRepository;
 import com.example.spring.demo.repositories.client.ClientRepository;
 import com.example.spring.demo.repositories.consultant.ConsultantRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class AppointmentManyToOneRepositoryTest {
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-    void getAppointmentWithConsultantTest() throws InterruptedException {
+    void getAppointmentWithConsultantTest() {
 
         Consultant consultant = new Consultant();
         consultant.setFirstName("Marco");

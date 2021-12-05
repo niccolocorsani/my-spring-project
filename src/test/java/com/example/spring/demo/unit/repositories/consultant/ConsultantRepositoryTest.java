@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-class ConsultantRepositoryTest {
+public class ConsultantRepositoryTest {
 
 	@Autowired
 	private ConsultantRepository repository;

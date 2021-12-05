@@ -1,7 +1,6 @@
 package com.example.spring.demo.unit.controllers.client;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.mockito.Mockito.*;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -13,7 +12,6 @@ import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.services.client.ClientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import junit.framework.Assert;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +22,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThrows;
@@ -72,7 +66,7 @@ class ClientControllerTest {
 	@Test
 	void testControllerGetClient() throws Exception {
 
-		Client c = new Client(1L, "Marco", "Rossi");
+		Client c = new Client(1L, "Marc3o", "Rossi");
 		when(clientService.getClientById(1L)).thenReturn(c);
 
 		MvcResult result = this.mvc.perform(get("/client/1").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())

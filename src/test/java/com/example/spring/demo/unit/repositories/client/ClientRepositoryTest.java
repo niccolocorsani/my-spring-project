@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
- class ClientRepositoryTest {
+ public class ClientRepositoryTest {
 
 	@Autowired
 	private ClientRepository repository;
