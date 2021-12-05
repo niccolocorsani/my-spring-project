@@ -5,7 +5,7 @@ import com.example.spring.demo.model.client.Client;
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
