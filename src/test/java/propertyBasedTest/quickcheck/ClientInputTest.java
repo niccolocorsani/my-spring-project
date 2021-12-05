@@ -40,7 +40,5 @@ public class ClientInputTest {
         assertNotNull(c);
     }
 
-
-
 }
 

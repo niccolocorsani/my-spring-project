@@ -30,7 +30,7 @@ public class ClientController {
     }
 
     @PutMapping( value = "/putClient")
-    public Client putClient(@Valid  Client client) {
+    public Client putClient(@RequestBody  Client client) {
         this.clientService.insertNewClient(client);
         return client;
     }
