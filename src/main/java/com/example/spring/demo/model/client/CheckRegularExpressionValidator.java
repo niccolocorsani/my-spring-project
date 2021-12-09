@@ -15,7 +15,7 @@ public class CheckRegularExpressionValidator implements ConstraintValidator<Chec
         if (value != null) {
             return value.matches("^[a-zA-Z]+");
         }
-        return true;
+        return false;
     }
 }
 

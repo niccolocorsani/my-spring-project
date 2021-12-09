@@ -32,8 +32,8 @@ public class CheckRegularExpressionTest {
 	@Test
 	void testBadFirstName() {
 		assertThrows(ConstraintViolationException.class, () -> {
-
 			entityManager.persist(new Client(null, "test!1=@", ""));
 		});
 	}
 }
+
