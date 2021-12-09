@@ -44,7 +44,6 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -64,19 +63,19 @@
 			<groupId>com.pholser</groupId>
 			<artifactId>junit-quickcheck-core</artifactId>
 			<version>1.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.pholser</groupId>
 			<artifactId>junit-quickcheck-generators</artifactId>
 			<version>1.0</version>
+			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.10.Final</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>
@@ -133,6 +132,24 @@
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-test-source</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/it/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
