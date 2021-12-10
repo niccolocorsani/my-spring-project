@@ -18,7 +18,6 @@ public class ClientInputTest {
     public void testProva(String firstName) throws Exception {
         Client c = new Client();
         c.setFirstName(firstName);
-        System.err.println(firstName);
         assertNotNull(c);
     }
 
@@ -27,7 +26,6 @@ public class ClientInputTest {
     @Test
     public void testDate(@From(NumberConstrainGenerator.class) Long id) throws Exception {
         Client c = new Client(id, null, null);
-        System.err.println(id);
         assertNotNull(c);
     }
 
@@ -36,9 +34,12 @@ public class ClientInputTest {
     @Test
     public void testName(@From(StringConstrainGenerator.class) String firstName) throws Exception {
         Client c = new Client(null, firstName, null);
-        System.err.println(firstName);
         assertNotNull(c);
     }
 
 }
+
+
+
+
 

@@ -10,12 +10,17 @@ public class StringConstrainGenerator extends Generator<String> {
         super(String.class);
     }
 
-    @Override
+    @Override ////generate string of length 4
     public String generate(SourceOfRandomness random, GenerationStatus status) {
 
+    	
         String s1 = "";
         s1 = s1 + String.valueOf((char) random.nextInt()) + String.valueOf((char) random.nextInt())
                 + String.valueOf((char) random.nextInt()) + String.valueOf((char) random.nextInt());
         return s1;
     }
 }
+
+
+
+

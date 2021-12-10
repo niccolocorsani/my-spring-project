@@ -18,27 +18,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @RunWith(SpringRunner.class)
 public class CheckRegularExpressionTest {
 
+	@Autowired
+	private TestEntityManager entityManager;
 
-    @Autowired
-    private TestEntityManager entityManager;
+	@Test
+	void testGoodFirstName() {
+		Client saved = entityManager.persist(new Client(null, "test", ""));
+		assertThat(saved.getFirstName()).isEqualTo("test");
+		assertThat(saved.getId()).isNotNull();
+		assertThat(saved.getId()).isPositive();
+	}
 
-    @Test
-    void testGoodFirstName() {
-        Client saved =
-                entityManager.
-                        persist(new Client(null, "test", ""));
-        assertThat(saved.getFirstName()).isEqualTo("test");
-        assertThat(saved.getId()).isNotNull();
-        assertThat(saved.getId()).isPositive();
-    }
-
-    @Test
-    void testBadFirstName() {
-        assertThrows(ConstraintViolationException.class,
-                () -> {
-                    Client saved =
-                            entityManager.
-                                    persist(new Client(null, "test!1=@", ""));
-                });
-    }
+	@Test
+	void testBadFirstName() {
+		assertThrows(ConstraintViolationException.class, () -> {
+			entityManager.persist(new Client(null, "test!1=@", ""));
+		});
+	}
 }
+
