@@ -20,7 +20,7 @@ import com.example.spring.demo.services.consultant.ConsultantService;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Import(ConsultantService.class)
- class ConsultantServiceRepositoryIT1 {
+ class ConsultantServiceRepositoryIT {
 
 
     @Autowired
