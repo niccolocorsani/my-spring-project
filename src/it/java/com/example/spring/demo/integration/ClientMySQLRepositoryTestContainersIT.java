@@ -30,7 +30,7 @@ public class ClientMySQLRepositoryTestContainersIT {
     public static MySQLContainer container = new MySQLContainer()
             .withUsername("duke")
             .withPassword("password")
-            .withDatabaseName("test");
+            .withDatabaseName("test?enabledTLSProtocols=TLSv1.2");
 
 
 
