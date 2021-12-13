@@ -27,14 +27,16 @@ public class ClientMySQLRepositoryTestContainersIT {
     public static MySQLContainer container = new MySQLContainer()
             .withUsername("operations")
             .withPassword("operations")
-            .withDatabaseName("test?useSSL=false");
+            .withDatabaseName("test");
 
 
 
 
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", container::getJdbcUrl);
+        registry.add("spring.datasource.url", ()->"jdbc:mysql://"+ container.getContainerIpAddress() + ":" +container.getMappedPort(3306)+"/"+"test?useSSL=false");
+        System.err.println(container.getJdbcUrl());
+       // registry.add("spring.datasource.url", container::getJdbcUrl);
         registry.add("spring.datasource.password", container::getPassword);
         registry.add("spring.datasource.username", container::getUsername);
         registry.add("spring.jpa.hibernate.ddl-auto", ()->  "create-drop");
