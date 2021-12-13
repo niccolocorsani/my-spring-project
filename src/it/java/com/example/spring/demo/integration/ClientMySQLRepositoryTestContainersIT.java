@@ -28,9 +28,9 @@ public class ClientMySQLRepositoryTestContainersIT {
 
     @Container
     public static MySQLContainer container = new MySQLContainer()
-            .withUsername("duke")
-            .withPassword("password")
-            .withDatabaseName("test?enabledTLSProtocols=TLSv1.2");
+            .withUsername("operations")
+            .withPassword("operations")
+            .withDatabaseName("test");
 
 
 
@@ -45,18 +45,13 @@ public class ClientMySQLRepositoryTestContainersIT {
     }
 
     @Autowired
-    private ClientRepository bookRepository;
-
-    @Autowired
-    private TestEntityManager em;
+    private ClientRepository clientRepository;
 
     @Test
-    void contextLoads() throws InterruptedException, SQLException {
-
+    void saveClient()  {
 
         Client client = new Client(1L, "test", "test");
-        bookRepository.save(client);
-        Thread.sleep(10000);
+        clientRepository.save(client);
         System.out.println("Context loads!");
     }
 }
