@@ -15,17 +15,14 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
 
-@Testcontainers(disabledWithoutDocker = true)
+
+@Testcontainers
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClientMySQLRepositoryTestContainersIT {
-
+/*
     @Container
     public static MySQLContainer container = new MySQLContainer()
             .withUsername("operations")
@@ -53,5 +50,5 @@ public class ClientMySQLRepositoryTestContainersIT {
         Client client = new Client(1L, "test", "test");
         clientRepository.save(client);
         System.out.println("Context loads!");
-    }
+    }*/
 }
