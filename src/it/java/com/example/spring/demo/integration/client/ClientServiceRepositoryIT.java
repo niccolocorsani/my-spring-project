@@ -1,4 +1,4 @@
-package com.example.spring.demo.integration;
+package com.example.spring.demo.integration.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,7 +31,6 @@ import com.example.spring.demo.services.client.ClientService;
 
 	@Test
     @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-
 	 void testServiceCanInsertIntoRepository() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
 		assertThat(clientRepository.findById(saved.getId())).isPresent();
@@ -40,7 +39,6 @@ import com.example.spring.demo.services.client.ClientService;
 
 	@Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-
 	 void testServiceCanUpdateRepository() {
 		Client saved = clientRepository.save(new Client(1L, "Marco", "Rossi"));
 		Client modified = clientService.updateClientById(saved.getId(), new Client(saved.getId(), "modified", ""));
@@ -50,7 +48,6 @@ import com.example.spring.demo.services.client.ClientService;
 
 	@Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-
 	 void testServiceDeleteClientByID() {
 		Client saved = clientService.insertNewClient(new Client(1L, "Marco", "Rossi"));
         clientService.insertNewClient(saved);
@@ -62,7 +59,6 @@ import com.example.spring.demo.services.client.ClientService;
 	
 	@Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-
 	void testServiceGetClientByID() {
 		Client client = new Client();
 		client.setUserName("MarcoUser");

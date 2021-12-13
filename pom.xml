@@ -82,55 +82,17 @@
             <version>1.10.5</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.testcontainers/postgresql -->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>1.16.2</version>
             <scope>test</scope>
         </dependency>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <dependency>
-            <groupId>de.bwaldvogel</groupId>
-            <artifactId>mongo-java-server</artifactId>
-            <version>1.39.0</version>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>mongodb</artifactId>
-            <version>1.16.2</version>
-            <scope>test</scope>
-        </dependency>
-
-
-
-
-
-
-
-
-
-
-
     </dependencies>
     <build>
         <plugins>

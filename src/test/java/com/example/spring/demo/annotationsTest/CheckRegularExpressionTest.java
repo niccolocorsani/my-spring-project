@@ -1,4 +1,4 @@
-package com.example.spring.demo.AnnotationsTest;
+package com.example.spring.demo.annotationsTest;
 
 import com.example.spring.demo.model.client.Client;
 
@@ -25,8 +25,7 @@ public class CheckRegularExpressionTest {
 	void testGoodFirstName() {
 		Client saved = entityManager.persist(new Client(null, "test", ""));
 		assertThat(saved.getFirstName()).isEqualTo("test");
-		assertThat(saved.getId()).isNotNull();
-		assertThat(saved.getId()).isPositive();
+		assertThat(saved.getFirstName()).isNotNull();
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package com.example.spring.demo.integration;
+package com.example.spring.demo.integration.consultant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
