@@ -22,12 +22,12 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClientMySQLRepositoryTestContainersIT {
-/*
+
     @Container
     public static MySQLContainer container = new MySQLContainer()
             .withUsername("operations")
             .withPassword("operations")
-            .withDatabaseName("test");
+            .withDatabaseName("test?useSSL=false");
 
 
 
@@ -50,5 +50,5 @@ public class ClientMySQLRepositoryTestContainersIT {
         Client client = new Client(1L, "test", "test");
         clientRepository.save(client);
         System.out.println("Context loads!");
-    }*/
+    }
 }
