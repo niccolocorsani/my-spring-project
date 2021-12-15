@@ -33,7 +33,6 @@ import org.springframework.web.client.RestTemplate;
 import java.io.File;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @Testcontainers
@@ -87,23 +86,15 @@ public class ClientDockeComposeTestContainersE2E {
     public void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
 
         Random rand = new Random();
-
-
         Thread.sleep(1000);
-
         driver.get(baseUrl + "/client/api/clients");
         long generatedLong = (long) (rand.nextLong());
-
-        postEmployee("test", rand.nextLong());
-        postEmployee("test", rand.nextLong());
         postEmployee("test", rand.nextLong());
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
-
         String d = wb.getText();
-
       //  assertTrue(wb.getText().contains(String.valueOf(generatedLong)));
     }
 
@@ -121,10 +112,5 @@ public class ClientDockeComposeTestContainersE2E {
     }
 
 
-    /*@Test
-    void shouldThrowExceptionOnStoppedContainer()  {
 
-        clientRepository.save(new Client(1L, "testUser", "testUser"));
-
-    }*/
 }

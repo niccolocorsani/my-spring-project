@@ -54,7 +54,7 @@ public class ClientRestControllerIT {
         Optional<Client> c = clientRepository.findById(saved.getId());
         System.out.println(c.get().getFirstName());
 
-        assertEquals(clientRepository.findById(saved.getId()).get().getFirstName(),saved);
+        assertEquals(clientRepository.findById(saved.getId()).get().getFirstName(),saved.getFirstName());
     }
 
     @Test
@@ -66,11 +66,10 @@ public class ClientRestControllerIT {
                 contentType(MediaType.APPLICATION_JSON_VALUE).
                 body(new Client(1l, "test", "test")).
                 when().
-                get("/spring-app/client/putClient").
+                put("/spring-app/client/putClient").
                 then().
                 statusCode(200).
                 body(
-                        "id", equalTo(saved.getId().intValue()),
                         "firstName", equalTo("test"),
                         "firstName", equalTo("test")
                 );
