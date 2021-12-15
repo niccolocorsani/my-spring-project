@@ -102,13 +102,15 @@ public class ClientDockeComposeTestContainersE2E {
         Random rand = new Random();
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
+        driver.get("www.google.com");
+        WebElement wb =  driver.findElement(By.xpath("//*[text()='google']"));
+        System.err.println(wb.getText());
         long generatedLong = rand.nextLong();
         postEmployee("test", generatedLong);
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
-        String d = wb.getText();
         assertTrue(wb.getText().contains("test"));
     }
 
@@ -122,7 +124,7 @@ public class ClientDockeComposeTestContainersE2E {
                 new HttpEntity<String>(body.toString(), headers);
         new RestTemplate()
                 //// controllare su github action se problema puo risiedere  nel url (forse buono ) messo qui sotto
-                .put("http://localhost:8080/spring-app/client/putClient", entity);
+                .put(baseUrl+"/spring-app/client/putClient", entity);
 
     }
 
