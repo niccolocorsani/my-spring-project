@@ -26,8 +26,10 @@ jobs:
             ~/.sonar/cache
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
           restore-keys: ${{ runner.os }}-m2-
-      - name: Unit and Integration Tests
-        run: mvn verify
+      - name: Install Google Chrome
+          run: |
+            chmod +x ./scripts/InstallChrome.sh
+                        ./scripts/InstallChrome.sh
       - name: End-to-end tests
         run: xvfb-run mvn verify -Pe2e-tests
         env:
