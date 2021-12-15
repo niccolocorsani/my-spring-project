@@ -109,7 +109,7 @@ public class ClientDockeComposeTestContainersE2E {
         HttpEntity<String> entity =
                 new HttpEntity<String>(body.toString(), headers);
         new RestTemplate()
-                .put(baseUrl + "/client/putClient", entity);
+                .put("http://localhost:8080/spring-app/client/putClient", entity);
 
     }
 
