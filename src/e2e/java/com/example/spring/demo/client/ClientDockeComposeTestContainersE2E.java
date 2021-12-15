@@ -103,8 +103,8 @@ public class ClientDockeComposeTestContainersE2E {
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         driver.get("www.google.com");
-        WebElement wb =  driver.findElement(By.xpath("//*[text()='google']"));
-        System.err.println(wb.getText());
+        WebElement wb1 =  driver.findElement(By.xpath("//*[text()='google']"));
+        System.err.println(wb1.getText());
         long generatedLong = rand.nextLong();
         postEmployee("test", generatedLong);
         Thread.sleep(1000);
