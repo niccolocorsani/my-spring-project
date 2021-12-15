@@ -71,6 +71,7 @@ public class ClientDockeComposeTestContainersE2E {
                 postEmployee("test", 1L);
                 containerReady = true;
             } catch (Exception exception) {
+                exception.printStackTrace();
                 System.err.println(containerReady);
             }
         }
@@ -78,6 +79,7 @@ public class ClientDockeComposeTestContainersE2E {
 
     @AfterAll
     public static void teardown() {
+        container.stop();
         driver.quit();
     }
 
