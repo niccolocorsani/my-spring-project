@@ -55,30 +55,6 @@ public class ClientMySQLRepositoryTestContainersIT {
         Client client = new Client(1L, "test", "test");
         Client saved = clientRepository.save(client);
         assertEquals(saved.getFirstName(), client.getFirstName());
-        List<Volumes> volumList = container.getVolumesFroms();
-
-
-
-
-
-        org.testcontainers.containers.Container.ExecResult er = container.execInContainer("/bin/bash");
-
-
-        System.out.println(er.getStdout());
-        System.out.println(er.getStderr());
-
-        org.testcontainers.containers.Container.ExecResult   er2 = container.execInContainer("/bin/bash","mysql -uoperations -poperations");
-        System.out.println(er2.getStdout());
-        System.out.println(er2.getStderr());
-
-
-        org.testcontainers.containers.Container.ExecResult   er1 = container.execInContainer("/bin/sh","SHOW TABLES;");
-        //org.testcontainers.containers.Container.ExecResult   er1 = container.execInContainer("cd var");
-        System.err.println("oooooooooo");
-        System.out.println(er1.getStdout());
-        System.out.println(er1.getStderr());
-
-
     }
 
 
