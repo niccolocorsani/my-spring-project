@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: e2e-tests
 
 on:
   push:

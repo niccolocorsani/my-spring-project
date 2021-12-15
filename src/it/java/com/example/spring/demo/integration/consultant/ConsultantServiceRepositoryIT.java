@@ -65,8 +65,8 @@ import com.example.spring.demo.services.consultant.ConsultantService;
         consultantService.insertNewConsultant(consultant);
         
         consultantService.getConsultantById(1L);
-         assertEquals(consultantService.getConsultantById(consultant.getId()).getId(),1L);
- 		assertEquals(consultantService.getConsultantById(consultant.getId()).getUserName(),"MarcoUser");
+         assertEquals(1L,consultantService.getConsultantById(consultant.getId()).getId());
+ 		assertEquals("MarcoUser",consultantService.getConsultantById(consultant.getId()).getUserName());
 
 		
     }
@@ -77,7 +77,7 @@ import com.example.spring.demo.services.consultant.ConsultantService;
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
 		consultantService.insertNewConsultant(consultant);
-		assertTrue(consultantService.getAllConsultants().size()==1);
+		assertEquals(consultantService.getAllConsultants().size(),1);
 
 	}
 }

@@ -66,8 +66,8 @@ import com.example.spring.demo.services.client.ClientService;
 		client.setId(1L);
 		clientService.insertNewClient(client);
 		clientService.getClientById(1L);
-		assertEquals(clientService.getClientById(client.getId()).getId(),1L);
-		assertEquals(clientService.getClientById(client.getId()).getUserName(),"MarcoUser");
+		assertEquals(1L,clientService.getClientById(client.getId()).getId());
+		assertEquals("MarcoUser",clientService.getClientById(client.getId()).getUserName());
 
 
 	}
