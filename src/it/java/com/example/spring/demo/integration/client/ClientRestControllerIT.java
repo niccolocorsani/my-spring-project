@@ -1,8 +1,8 @@
 package com.example.spring.demo.integration.client;
 
 import static io.restassured.RestAssured.given;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.repositories.client.ClientRepository;
@@ -26,7 +26,7 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ClientRestControllerIT {
-/*
+
     @Autowired
     private ClientRepository clientRepository;
 
@@ -52,22 +52,21 @@ public class ClientRestControllerIT {
 
         System.out.println(saved.getFirstName());
         Optional<Client> c = clientRepository.findById(saved.getId());
-        System.out.println(c.getFirstName());
+        System.out.println(c.get().getFirstName());
 
-        assertThat(clientRepository.findById(saved.getId()))
-                .contains(saved);
+        assertEquals(clientRepository.findById(saved.getId()).get().getFirstName(),saved);
     }
 
     @Test
     public void testUpdateClient() throws Exception {
         Client saved = clientRepository
-                .save(new Client(null, "test", "test"));
+                .save(new Client(1l, "client", "test"));
 
         given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).
-                body(new Client(null, "test", "test")).
+                body(new Client(1l, "test", "test")).
                 when().
-                put("/spring-app/client/putClient").
+                get("/spring-app/client/putClient").
                 then().
                 statusCode(200).
                 body(
@@ -77,5 +76,5 @@ public class ClientRestControllerIT {
                 );
     }
 
-*/
+
 }
