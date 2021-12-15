@@ -31,6 +31,6 @@ jobs:
             chmod +x ./scripts/InstallChrome.sh
                         ./scripts/InstallChrome.sh
       - name: End-to-end tests
-        run: xvfb-run mvn verify -Pe2e-tests
+        run: xvfb-run mvn verify -Pe2e-tests #to run only e2e
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

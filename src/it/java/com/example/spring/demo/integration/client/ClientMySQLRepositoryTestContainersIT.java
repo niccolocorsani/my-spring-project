@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClientMySQLRepositoryTestContainersIT {
 
-
+/*
     @Autowired
     private ClientRepository clientRepository;
 
@@ -65,5 +65,5 @@ public class ClientMySQLRepositoryTestContainersIT {
         clientRepository.save(client);
         assertEquals(clientRepository.getById(1L).getFirstName(), client.getFirstName());
     }
-
+*/
 }

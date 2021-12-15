@@ -33,4 +33,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=niccolocorsani_my-spring-project
+        run: mvn -B verify -P !e2e-tests org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=niccolocorsani_my-spring-project
+        #-P !e2e-tests to exclude from build

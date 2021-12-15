@@ -1,5 +1,4 @@
 package com.example.spring.demo.integration.client;
-package com.examples.spring.demo;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +24,7 @@ import io.restassured.response.Response;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ClientRestControllerIT {
 
-    @Autowired
+ /*   @Autowired
     private ClientRepository clientRepository;
 
     @LocalServerPort
@@ -74,4 +73,7 @@ public class ClientRestControllerIT {
                         "salary", equalTo(2000)
                 );
     }
+
+
+  */
 }
