@@ -2,6 +2,7 @@ package com.example.spring.demo.integration.client;
 
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.repositories.client.ClientRepository;
+import com.github.dockerjava.api.model.Volumes;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,8 +36,6 @@ public class ClientMySQLRepositoryTestContainersIT {
 
     @Container
     public static MySQLContainer container = new MySQLContainer()
-            .withUsername("operations")
-            .withPassword("operations")
             .withDatabaseName("test");
 
 
@@ -51,10 +51,34 @@ public class ClientMySQLRepositoryTestContainersIT {
 
     @Test
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-    void saveClientTest() {
+    void saveClientTest() throws IOException, InterruptedException {
         Client client = new Client(1L, "test", "test");
         Client saved = clientRepository.save(client);
-        assertEquals(saved.getFirstName(),client.getFirstName());
+        assertEquals(saved.getFirstName(), client.getFirstName());
+        List<Volumes> volumList = container.getVolumesFroms();
+
+
+
+
+
+        org.testcontainers.containers.Container.ExecResult er = container.execInContainer("/bin/bash");
+
+
+        System.out.println(er.getStdout());
+        System.out.println(er.getStderr());
+
+        org.testcontainers.containers.Container.ExecResult   er2 = container.execInContainer("/bin/bash","mysql -uoperations -poperations");
+        System.out.println(er2.getStdout());
+        System.out.println(er2.getStderr());
+
+
+        org.testcontainers.containers.Container.ExecResult   er1 = container.execInContainer("/bin/sh","SHOW TABLES;");
+        //org.testcontainers.containers.Container.ExecResult   er1 = container.execInContainer("cd var");
+        System.err.println("oooooooooo");
+        System.out.println(er1.getStdout());
+        System.out.println(er1.getStderr());
+
+
     }
 
 
@@ -63,7 +87,7 @@ public class ClientMySQLRepositoryTestContainersIT {
     void getClientTest() {
         Client client = new Client(1L, "test", "test");
         clientRepository.save(client);
-        assertEquals(clientRepository.getById(1L).getFirstName(),client.getFirstName());
+        assertEquals(clientRepository.getById(1L).getFirstName(), client.getFirstName());
     }
 
 }
