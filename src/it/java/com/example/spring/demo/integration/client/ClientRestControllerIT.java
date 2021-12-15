@@ -20,6 +20,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
+import java.util.Optional;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -42,11 +44,15 @@ public class ClientRestControllerIT {
     public void testNewClient() throws Exception {
         Response response = given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).
-                body(new Client(null, "client", "tet")).
+                body(new Client(null, "client", "test")).
                 when().
-                put("/spring-app/putClient");
+                put("/spring-app/client/putClient");
 
         Client saved = response.getBody().as(Client.class);
+
+        System.out.println(saved.getFirstName());
+        Optional<Client> c = clientRepository.findById(saved.getId());
+        System.out.println(c.getFirstName());
 
         assertThat(clientRepository.findById(saved.getId()))
                 .contains(saved);
@@ -61,13 +67,13 @@ public class ClientRestControllerIT {
                 contentType(MediaType.APPLICATION_JSON_VALUE).
                 body(new Client(null, "test", "test")).
                 when().
-                put("/spring-app/putClient")
+                put("/spring-app/client/putClient").
                 then().
                 statusCode(200).
                 body(
                         "id", equalTo(saved.getId().intValue()),
-                        "name", equalTo("modified name"),
-                        "salary", equalTo("test")
+                        "firstName", equalTo("test"),
+                        "firstName", equalTo("test")
                 );
     }
 

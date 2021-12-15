@@ -42,7 +42,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClientDockeComposeTestContainersIT {
 
-/*
+
     @Container
     public static DockerComposeContainer container =
             new DockerComposeContainer(new File("./docker-compose.yml"));
