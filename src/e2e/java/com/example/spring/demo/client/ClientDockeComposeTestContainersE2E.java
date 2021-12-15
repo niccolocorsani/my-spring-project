@@ -33,6 +33,7 @@ import org.springframework.web.client.RestTemplate;
 import java.io.File;
 import java.util.Random;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @Testcontainers
@@ -97,7 +98,7 @@ public class ClientDockeComposeTestContainersE2E {
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
         String d = wb.getText();
-      //  assertTrue(wb.getText().contains(String.valueOf(generatedLong)));
+        assertTrue(wb.getText().contains(String.valueOf(generatedLong)));
     }
 
     private void postEmployee(String name, Long id) throws JSONException {
