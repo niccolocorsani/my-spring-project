@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
           restore-keys: ${{ runner.os }}-m2-
       - name: Install Google Chrome
-          run: |
+        run: |
             chmod +x ./scripts/InstallChrome.sh
                         ./scripts/InstallChrome.sh
       - name: End-to-end tests

@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.repositories.client.ClientRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ import io.restassured.response.Response;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ClientRestControllerIT {
 
- /*   @Autowired
+    @Autowired
     private ClientRepository clientRepository;
 
     @LocalServerPort
@@ -42,7 +43,7 @@ public class ClientRestControllerIT {
     public void testNewClient() throws Exception {
         Response response = given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).
-                body(new Client(null, "new client", 1000)).
+                body(new Client(null, "new client", "tet")).
                 when().
                 post("/api/clients/new");
 
@@ -56,12 +57,12 @@ public class ClientRestControllerIT {
     public void testUpdateClient() throws Exception {
         // create an client with the repository
         Client saved = clientRepository
-                .save(new Client(null, "original name", 1000));
+                .save(new Client(null, "test", "test"));
 
         // modify it with PUT
         given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).
-                body(new Client(null, "modified name", 2000)).
+                body(new Client(null, "test", "test")).
                 when().
                 put("/api/clients/update/" + saved.getId()).
                 then().
@@ -70,10 +71,9 @@ public class ClientRestControllerIT {
                         // in the JSON response the id is an integer
                         "id", equalTo(saved.getId().intValue()),
                         "name", equalTo("modified name"),
-                        "salary", equalTo(2000)
+                        "salary", equalTo("test")
                 );
     }
 
 
-  */
 }
