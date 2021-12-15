@@ -32,6 +32,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.util.Random;
+import java.util.logging.Level;
+
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -41,6 +46,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClientDockeComposeTestContainersE2E {
+
+
+    static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
 
     @Container
@@ -61,6 +69,10 @@ public class ClientDockeComposeTestContainersE2E {
     @BeforeEach
     public void setup() {
 
+
+
+
+        //.getLogger("org.testcontainers").setLevel(Level.SEVERE);
         baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
         container.start();
@@ -84,21 +96,20 @@ public class ClientDockeComposeTestContainersE2E {
         driver.quit();
     }
 
-
     @Test
     public void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
 
         Random rand = new Random();
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
-        long generatedLong = (long) (rand.nextLong());
-        postEmployee("test", rand.nextLong());
+        long generatedLong = rand.nextLong();
+        postEmployee("test", generatedLong);
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
         String d = wb.getText();
-        assertTrue(wb.getText().contains(String.valueOf(generatedLong)));
+        assertTrue(wb.getText().contains("test"));
     }
 
     private void postEmployee(String name, Long id) throws JSONException {
@@ -114,7 +125,6 @@ public class ClientDockeComposeTestContainersE2E {
                 .put("http://localhost:8080/spring-app/client/putClient", entity);
 
     }
-
 
 
 }

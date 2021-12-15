@@ -2,6 +2,12 @@
 logging:
   level:
     ROOT: OFF
+    org:
+      springframework:
+        boot: OFF
+    spring:
+      main:
+        banne-mode: OFF
 
 server:
   port: 8080
