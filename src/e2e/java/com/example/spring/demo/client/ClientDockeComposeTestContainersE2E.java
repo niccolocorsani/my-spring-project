@@ -72,13 +72,13 @@ public class ClientDockeComposeTestContainersE2E {
 
 
 
-        //.getLogger("org.testcontainers").setLevel(Level.SEVERE);
         baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
         container.start();
         boolean containerReady = false;
         while (containerReady != true) {
             try {
+                driver.get(baseUrl + "/client/api/clients");
                 Thread.sleep(20000);
                 System.err.println(containerReady);
                 postEmployee("test", 1L);
