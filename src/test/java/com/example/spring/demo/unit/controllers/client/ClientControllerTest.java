@@ -122,7 +122,7 @@ class ClientControllerTest {
 		try {
 			json = result.getResponse().getContentAsString();
 			System.err.println(json);
-			assertTrue(json.length()==0);
+			assertEquals(json.length(),0);
 		} catch (Exception e) {
 			System.out.println(json);
 

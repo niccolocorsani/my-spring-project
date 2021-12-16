@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class AppointmentManyToOneRepositoryTest {
+ class AppointmentManyToOneRepositoryTest {
     @Autowired
     private AppointmentRepository appointmentRepository;
 

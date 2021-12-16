@@ -55,7 +55,7 @@ class ClientConsulantOneToManyRepositoriyTest {
 		this.consultant.setAppointments(this.appointmentRepository.findAll());
 		this.consultantRepository.save(this.consultant);
 		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
-		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId() == 1L);
+		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId(),1L);
 		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getDate(),
 				Date.valueOf("2021-03-10"));
 	}
@@ -89,10 +89,10 @@ class ClientConsulantOneToManyRepositoriyTest {
           this.consultantRepository.save(consultant);
 		
 		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
-		assertTrue(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId() == 1L);
+		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId(),1L);
 		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getDate(),
 				Date.valueOf("2021-03-10"));
-		assertTrue(this.appointmentRepository.findAll().get(0).getConsultant().getId() == 1L);
+		assertEquals(this.appointmentRepository.findAll().get(0).getConsultant().getId(),1L);
 
 		
 	}

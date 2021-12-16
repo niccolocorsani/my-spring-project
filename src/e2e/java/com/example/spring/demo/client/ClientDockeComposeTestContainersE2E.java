@@ -79,10 +79,7 @@ class ClientDockeComposeTestContainersE2E {
         boolean containerReady = false;
         while (containerReady != true) {
             try {
-                driver.get("https://www.google.com/");
-                WebElement wb1 = driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
-                System.err.println(wb1.getText());
-                Thread.sleep(20000);
+                Thread.sleep(20000); // wait for container to start
                 System.err.println(containerReady);
                 postEmployee("test", 1L);
                 containerReady = true;
