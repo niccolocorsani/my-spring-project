@@ -30,8 +30,9 @@ public class CheckRegularExpressionTest {
 
 	@Test
 	void testBadFirstName() {
+		Client client = new Client(null, "test!1=@", "");
 		assertThrows(ConstraintViolationException.class, () -> {
-			entityManager.persist(new Client(null, "test!1=@", ""));
+			entityManager.persist(client);
 		});
 	}
 }

@@ -77,7 +77,7 @@ import com.example.spring.demo.services.consultant.ConsultantService;
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
 		consultantService.insertNewConsultant(consultant);
-		assertEquals(consultantService.getAllConsultants().size(),1);
+		assertEquals(1,consultantService.getAllConsultants().size());
 
 	}
 }

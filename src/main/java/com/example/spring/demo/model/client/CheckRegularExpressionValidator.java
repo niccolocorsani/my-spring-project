@@ -8,6 +8,7 @@ public class CheckRegularExpressionValidator implements ConstraintValidator<Chec
 
     @Override
     public void initialize(CheckRegularExperssion checkRegularExperssion) {
+        // necessario per inizializzazione
     }
 
     @Override

@@ -32,7 +32,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.File;
 import java.util.Random;
-import java.util.logging.Level;
 
 
 import org.apache.logging.log4j.Logger;
@@ -45,15 +44,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class ClientDockeComposeTestContainersE2E {
+class ClientDockeComposeTestContainersE2E {
 
 
     static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
 
-   // @Container
-  //  public static DockerComposeContainer container =
-     //       new DockerComposeContainer(new File("./docker-compose.yml"));
+    @Container
+    public static DockerComposeContainer container =
+            new DockerComposeContainer(new File("./docker-compose.exe"));
 
 
     private static WebDriver driver;
@@ -67,11 +66,11 @@ public class ClientDockeComposeTestContainersE2E {
     }
 
     @Test
-    public void startAnd(){}
+    public void startAnd() {
+    }
+
     @BeforeEach
     public void setup() throws InterruptedException {
-
-
 
 
         baseUrl = "http://localhost:8080/spring-app";
@@ -81,17 +80,7 @@ public class ClientDockeComposeTestContainersE2E {
         while (containerReady != true) {
             try {
                 driver.get("https://www.google.com/");
-                WebElement wb1 = driver.findElement(By.xpath("//*[contains(text(),'Prima')]"));
-                System.err.println(wb1.getText());
-                Thread.sleep(2000);
-            }
-            catch (Exception e){
-
-                e.printStackTrace();
-            }
-         /*   try {
-                driver.get("https://www.google.com/");
-                WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
+                WebElement wb1 = driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
                 System.err.println(wb1.getText());
                 Thread.sleep(20000);
                 System.err.println(containerReady);
@@ -100,11 +89,11 @@ public class ClientDockeComposeTestContainersE2E {
             } catch (Exception exception) {
                 exception.printStackTrace();
                 System.err.println(containerReady);
-            }*/
+            }
         }
     }
 
-/*    @AfterAll
+    @AfterAll
     public static void teardown() {
         container.stop();
         driver.quit();
@@ -115,10 +104,6 @@ public class ClientDockeComposeTestContainersE2E {
 
         Random rand = new Random();
         Thread.sleep(1000);
-        driver.get(baseUrl + "/client/api/clients");
-        driver.get("https://www.google.com/");
-        WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
-        System.err.println(wb1.getText());
         long generatedLong = rand.nextLong();
         postEmployee("test", generatedLong);
         Thread.sleep(1000);
@@ -137,10 +122,7 @@ public class ClientDockeComposeTestContainersE2E {
         HttpEntity<String> entity =
                 new HttpEntity<String>(body.toString(), headers);
         new RestTemplate()
-                //// controllare su github action se problema puo risiedere  nel url (forse buono ) messo qui sotto
-                .put(baseUrl+"/client/putClient", entity);
+                .put(baseUrl + "/client/putClient", entity);
 
-    }*/
-
-
+    }
 }

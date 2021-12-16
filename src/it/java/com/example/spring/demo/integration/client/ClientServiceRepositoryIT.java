@@ -81,7 +81,7 @@ import com.example.spring.demo.services.client.ClientService;
 		client.setId(1L);
 		client.setFirstName("nome");
 		clientService.insertNewClient(client);
-		assertTrue(clientService.getAllClients().size()==1);
+		assertEquals(clientService.getAllClients().size(),1);
 		
 	}
 	
