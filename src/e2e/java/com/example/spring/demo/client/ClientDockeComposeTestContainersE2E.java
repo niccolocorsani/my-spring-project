@@ -51,9 +51,9 @@ public class ClientDockeComposeTestContainersE2E {
     static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
 
-    @Container
-    public static DockerComposeContainer container =
-            new DockerComposeContainer(new File("./docker-compose.yml"));
+   // @Container
+  //  public static DockerComposeContainer container =
+     //       new DockerComposeContainer(new File("./docker-compose.yml"));
 
 
     private static WebDriver driver;
@@ -76,10 +76,11 @@ public class ClientDockeComposeTestContainersE2E {
 
         baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
-        container.start();
+        //container.start();
         boolean containerReady = false;
         while (containerReady != true) {
-            WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
+            driver.get("https://www.google.com/");
+            WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Prima')]"));
             System.err.println(wb1.getText());
                Thread.sleep(2000);
 
