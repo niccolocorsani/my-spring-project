@@ -78,7 +78,8 @@ public class ClientDockeComposeTestContainersE2E {
         boolean containerReady = false;
         while (containerReady != true) {
             try {
-                driver.get(baseUrl + "/client/api/clients");
+                driver.get("www.google.com");
+                WebElement wb1 =  driver.findElement(By.xpath("//*[text()='google']"));
                 Thread.sleep(20000);
                 System.err.println(containerReady);
                 postEmployee("test", 1L);
@@ -124,7 +125,7 @@ public class ClientDockeComposeTestContainersE2E {
                 new HttpEntity<String>(body.toString(), headers);
         new RestTemplate()
                 //// controllare su github action se problema puo risiedere  nel url (forse buono ) messo qui sotto
-                .put(baseUrl+"/spring-app/client/putClient", entity);
+                .put(baseUrl+"/client/putClient", entity);
 
     }
 
