@@ -67,7 +67,7 @@ public class ClientDockeComposeTestContainersE2E {
     }
 
     @BeforeEach
-    public void setup() {
+    public void setup() throws InterruptedException {
 
 
 
@@ -77,7 +77,11 @@ public class ClientDockeComposeTestContainersE2E {
         container.start();
         boolean containerReady = false;
         while (containerReady != true) {
-            try {
+            WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
+            System.err.println(wb1.getText());
+               Thread.sleep(2000);
+
+         /*   try {
                 driver.get("https://www.google.com/");
                 WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
                 System.err.println(wb1.getText());
@@ -88,11 +92,11 @@ public class ClientDockeComposeTestContainersE2E {
             } catch (Exception exception) {
                 exception.printStackTrace();
                 System.err.println(containerReady);
-            }
+            }*/
         }
     }
 
-    @AfterAll
+/*    @AfterAll
     public static void teardown() {
         container.stop();
         driver.quit();
@@ -128,7 +132,7 @@ public class ClientDockeComposeTestContainersE2E {
                 //// controllare su github action se problema puo risiedere  nel url (forse buono ) messo qui sotto
                 .put(baseUrl+"/client/putClient", entity);
 
-    }
+    }*/
 
 
 }
