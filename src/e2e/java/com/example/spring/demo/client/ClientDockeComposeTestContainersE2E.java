@@ -65,9 +65,6 @@ class ClientDockeComposeTestContainersE2E {
         WebDriverManager.chromedriver().setup();
     }
 
-    @Test
-    public void startAnd() {
-    }
 
     @BeforeEach
     public void setup() throws InterruptedException {
@@ -97,7 +94,7 @@ class ClientDockeComposeTestContainersE2E {
     }
 
     @Test
-    public void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
+     void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
 
         Random rand = new Random();
         Thread.sleep(1000);
