@@ -46,6 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class ClientDockeComposeTestContainersE2E {
 
+	
 
     static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
