@@ -66,6 +66,8 @@ public class ClientDockeComposeTestContainersE2E {
         WebDriverManager.chromedriver().setup();
     }
 
+    @Test
+    public void startAnd(){}
     @BeforeEach
     public void setup() throws InterruptedException {
 
