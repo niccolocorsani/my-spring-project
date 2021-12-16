@@ -125,8 +125,8 @@ class ConsultantControllerTest {
 				.andExpect(status().isOk()).andReturn();
 		String json = resultDelete.getResponse().getContentAsString();
 
-		Exception exception = assertThrows(Exception.class, () -> {
-			Consultant c = new ObjectMapper().readValue(json, Consultant.class);
+		assertThrows(Exception.class, () -> {
+			new ObjectMapper().readValue(json, Consultant.class);
 		});
 
 	}

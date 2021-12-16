@@ -30,7 +30,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     private ConsultantRepository consultantRepository;
 
 
-    @Container
+    @SuppressWarnings("rawtypes")
+	@Container
     public static MySQLContainer container = new MySQLContainer()
             .withUsername("operations")
             .withPassword("operations")

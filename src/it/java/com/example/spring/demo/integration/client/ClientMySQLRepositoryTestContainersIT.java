@@ -1,14 +1,11 @@
 package com.example.spring.demo.integration.client;
 
-import com.example.spring.demo.model.client.Client;
-import com.example.spring.demo.repositories.client.ClientRepository;
-import com.github.dockerjava.api.model.Volumes;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -17,8 +14,10 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import com.example.spring.demo.model.client.Client;
+import com.example.spring.demo.repositories.client.ClientRepository;
+
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,12 +28,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClientMySQLRepositoryTestContainersIT {
 
-/*
+
     @Autowired
     private ClientRepository clientRepository;
 
 
-    @Container
+    @SuppressWarnings("rawtypes")
+	@Container
     public static MySQLContainer container = new MySQLContainer()
             .withDatabaseName("test");
 
@@ -65,5 +65,5 @@ public class ClientMySQLRepositoryTestContainersIT {
         clientRepository.save(client);
         assertEquals(clientRepository.getById(1L).getFirstName(), client.getFirstName());
     }
-*/
+
 }

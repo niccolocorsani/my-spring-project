@@ -35,5 +35,12 @@ class CheckRegularExpressionTest {
 			entityManager.persist(client);
 		});
 	}
+	@Test
+	void testNullName() {
+		Client client = new Client(null, null, "");
+		assertThrows(ConstraintViolationException.class, () -> {
+			entityManager.persist(client);
+		});
+	}
 }
 

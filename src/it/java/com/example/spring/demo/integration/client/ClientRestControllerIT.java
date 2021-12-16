@@ -59,8 +59,7 @@ public class ClientRestControllerIT {
 
     @Test
     public void testUpdateClient() throws Exception {
-        Client saved = clientRepository
-                .save(new Client(1l, "client", "test"));
+  
 
         given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).

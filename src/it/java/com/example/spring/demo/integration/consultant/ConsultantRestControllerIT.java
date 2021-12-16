@@ -59,8 +59,6 @@ public class ConsultantRestControllerIT {
 
     @Test
     public void testUpdateConsultant() throws Exception {
-        Consultant saved = consultantRepository
-                .save(new Consultant(1l, "consultant", "test"));
 
         given().
                 contentType(MediaType.APPLICATION_JSON_VALUE).
