@@ -78,8 +78,8 @@ public class ClientDockeComposeTestContainersE2E {
         boolean containerReady = false;
         while (containerReady != true) {
             try {
-                driver.get("www.google.com");
-                WebElement wb1 =  driver.findElement(By.xpath("//*[text()='google']"));
+                driver.get("https://www.google.com/");
+                WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
                 Thread.sleep(20000);
                 System.err.println(containerReady);
                 postEmployee("test", 1L);
@@ -103,8 +103,8 @@ public class ClientDockeComposeTestContainersE2E {
         Random rand = new Random();
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
-        driver.get("www.google.com");
-        WebElement wb1 =  driver.findElement(By.xpath("//*[text()='google']"));
+        driver.get("https://www.google.com/");
+        WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
         System.err.println(wb1.getText());
         long generatedLong = rand.nextLong();
         postEmployee("test", generatedLong);
