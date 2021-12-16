@@ -36,7 +36,7 @@ public class ConsultantController {
 
     @PutMapping( value = "/updateConsultant")
     public Consultant updateConsultant(@RequestBody Consultant consultant) {
-        this.consultantService.updateConsultantById(consultant.getId(), consultant);
+        this.consultantService.updateConsultantById(consultant);
         return consultant;
     }
     

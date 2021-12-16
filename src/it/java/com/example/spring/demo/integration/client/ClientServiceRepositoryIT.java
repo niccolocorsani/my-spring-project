@@ -40,7 +40,7 @@ import com.example.spring.demo.services.client.ClientService;
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 	 void testServiceCanUpdateRepository() {
 		Client saved = clientRepository.save(new Client(1L, "Marco", "Rossi"));
-		Client modified = clientService.updateClientById(saved.getId(), new Client(saved.getId(), "modified", ""));
+		Client modified = clientService.updateClientById(new Client(saved.getId(), "modified", ""));
 		assertThat(clientRepository.findById(saved.getId())).contains(modified);
 	}
 
@@ -80,7 +80,7 @@ import com.example.spring.demo.services.client.ClientService;
 		client.setId(1L);
 		client.setFirstName("nome");
 		clientService.insertNewClient(client);
-		assertEquals(clientService.getAllClients().size(),1);
+		assertEquals(1,clientService.getAllClients().size());
 		
 	}
 	

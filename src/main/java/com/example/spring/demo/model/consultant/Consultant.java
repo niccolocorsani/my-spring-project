@@ -21,7 +21,7 @@ public class Consultant {
 
 
 	@OneToMany(mappedBy = "consultant", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-	private List<Appointment> appointments = new ArrayList<>();;
+	private List<Appointment> appointments = new ArrayList<>();
 	
 
 	public Consultant(Long id, String firstName, String lastName) {

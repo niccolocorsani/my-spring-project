@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class CheckRegularExpressionTest {
+class CheckRegularExpressionTest {
 
 	@Autowired
 	private TestEntityManager entityManager;

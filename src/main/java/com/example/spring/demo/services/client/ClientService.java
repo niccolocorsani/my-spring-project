@@ -28,7 +28,7 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 
-	public Client updateClientById(long id, Client replacement) {
+	public Client updateClientById(Client replacement) {
 		return clientRepository.save(replacement);
 	}
 

@@ -40,7 +40,7 @@ import com.example.spring.demo.services.consultant.ConsultantService;
     @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
      void testServiceCanUpdateRepository() {
         Consultant saved = consultantRepository.save(new Consultant(1L, "Marco", "Rossi"));
-        Consultant modified = consultantService.updateConsultantById(saved.getId(), new Consultant(saved.getId(), "modified", ""));
+        Consultant modified = consultantService.updateConsultantById(new Consultant(saved.getId(), "modified", ""));
         assertThat(consultantRepository.findById(saved.getId())).contains(modified);
     }
 

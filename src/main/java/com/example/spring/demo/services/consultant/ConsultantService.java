@@ -28,7 +28,7 @@ public class ConsultantService {
 		return consultantRepository.save(consultant);
 	}
 
-	public Consultant updateConsultantById(long id, Consultant replacement) {
+	public Consultant updateConsultantById(Consultant replacement) {
 
 		return consultantRepository.save(replacement);
 	}

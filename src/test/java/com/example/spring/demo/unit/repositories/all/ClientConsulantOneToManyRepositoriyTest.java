@@ -89,10 +89,10 @@ class ClientConsulantOneToManyRepositoriyTest {
           this.consultantRepository.save(consultant);
 		
 		assertNotNull(this.consultantRepository.findAll().get(0).getAppointments().get(0));
-		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getId(),1L);
+		assertEquals(1L,this.consultantRepository.findAll().get(0).getAppointments().get(0).getId());
 		assertEquals(this.consultantRepository.findAll().get(0).getAppointments().get(0).getDate(),
 				Date.valueOf("2021-03-10"));
-		assertEquals(this.appointmentRepository.findAll().get(0).getConsultant().getId(),1L);
+		assertEquals(1L,this.appointmentRepository.findAll().get(0).getConsultant().getId());
 
 		
 	}

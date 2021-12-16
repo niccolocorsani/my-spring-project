@@ -37,7 +37,7 @@ public class ClientController {
     @PutMapping( value = "/updateClient")
     public Client updateClient(@RequestBody Client client) {
 
-        this.clientService.updateClientById(client.getId(), client);
+        this.clientService.updateClientById(client);
         return client;
     }
     

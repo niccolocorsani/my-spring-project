@@ -28,6 +28,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
 
       - name: End-to-end tests
-        run: xvfb-run mvn verify -Pe2e-tests #to run only e2e
+        #run: xvfb-run mvn verify -Pe2e-tests #to run only e2e
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
