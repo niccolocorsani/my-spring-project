@@ -80,6 +80,7 @@ public class ClientDockeComposeTestContainersE2E {
             try {
                 driver.get("https://www.google.com/");
                 WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
+                System.err.println(wb1.getText());
                 Thread.sleep(20000);
                 System.err.println(containerReady);
                 postEmployee("test", 1L);
