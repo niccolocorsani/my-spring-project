@@ -79,11 +79,16 @@ public class ClientDockeComposeTestContainersE2E {
         //container.start();
         boolean containerReady = false;
         while (containerReady != true) {
-            driver.get("https://www.google.com/");
-            WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Prima')]"));
-            System.err.println(wb1.getText());
-               Thread.sleep(2000);
+            try {
+                driver.get("https://www.google.com/");
+                WebElement wb1 = driver.findElement(By.xpath("//*[contains(text(),'Prima')]"));
+                System.err.println(wb1.getText());
+                Thread.sleep(2000);
+            }
+            catch (Exception e){
 
+                e.printStackTrace();
+            }
          /*   try {
                 driver.get("https://www.google.com/");
                 WebElement wb1 =  driver.findElement(By.xpath("//*[contains(text(),'Cerca')]"));
