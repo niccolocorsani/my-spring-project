@@ -50,10 +50,10 @@ class ClientDockeComposeTestContainersE2E {
     static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
 
-     @SuppressWarnings("rawtypes")
-    @Container
-     public static DockerComposeContainer container =
-        new DockerComposeContainer(new File("./docker-compose.yml"));
+    // @SuppressWarnings("rawtypes")
+   // @Container
+   //  public static DockerComposeContainer container =
+     //   new DockerComposeContainer(new File("./docker-compose.yml"));
 
 
     private static WebDriver driver;
