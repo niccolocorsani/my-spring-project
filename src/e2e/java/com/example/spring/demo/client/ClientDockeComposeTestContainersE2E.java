@@ -76,6 +76,7 @@ class ClientDockeComposeTestContainersE2E {
         driver = new ChromeDriver();
         //container.start();
         boolean containerReady = false;
+        int i = 0;
         while (containerReady != true) {
             try {
                 driver.get("https://www.google.com/");
@@ -84,6 +85,8 @@ class ClientDockeComposeTestContainersE2E {
                 System.err.println(driver.getPageSource());
                 System.out.println(wb.getText());
                 Thread.sleep(2000); // wait for container to start
+                i++;
+                if(i == 4) containerReady = true;
              //   System.err.println(containerReady);
              //   postEmployee("test", 1L);
               //  containerReady = true;
