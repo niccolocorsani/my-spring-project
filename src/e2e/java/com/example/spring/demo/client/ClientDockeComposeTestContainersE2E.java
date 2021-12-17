@@ -46,15 +46,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class ClientDockeComposeTestContainersE2E {
 
-	
 
     static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
 
-   // @SuppressWarnings("rawtypes")
-	//@Container
-   // public static DockerComposeContainer container =
-        //    new DockerComposeContainer(new File("./docker-compose.yml"));
+    // @SuppressWarnings("rawtypes")
+    //@Container
+    // public static DockerComposeContainer container =
+    //    new DockerComposeContainer(new File("./docker-compose.yml"));
 
 
     private static WebDriver driver;
@@ -79,17 +78,9 @@ class ClientDockeComposeTestContainersE2E {
         int i = 0;
         while (containerReady != true) {
             try {
-                driver.get("https://www.google.com/");
-            //    WebElement wb = driver.findElement(By.xpath("//*[contains(text(),'Accetto')]"));
-
-                //System.err.println(driver.getPageSource());
-              //  System.out.println(wb.getText());
-                Thread.sleep(2000); // wait for container to start
-                i++;
-                if(i == 4) containerReady = true;
-             //   System.err.println(containerReady);
+                Thread.sleep(10000); // wait for container to start
                 postEmployee("test", 1L);
-              //  containerReady = true;
+                containerReady = true;
             } catch (Exception exception) {
                 exception.printStackTrace();
                 System.err.println(containerReady);
@@ -99,14 +90,13 @@ class ClientDockeComposeTestContainersE2E {
 
     @AfterAll
     public static void teardown() {
-       //container.stop();
+        //container.stop();
         driver.quit();
     }
 
-        @Test
-     void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {}
-  /*  @Test
-     void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
+
+    @Test
+    void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
 
         Random rand = new Random();
         Thread.sleep(1000);
@@ -117,7 +107,7 @@ class ClientDockeComposeTestContainersE2E {
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
         assertTrue(wb.getText().contains("test"));
-    }*/
+    }
 
     private void postEmployee(String name, Long id) throws JSONException {
         JSONObject body = new JSONObject();
@@ -131,6 +121,6 @@ class ClientDockeComposeTestContainersE2E {
                 .put(baseUrl + "/client/putClient", entity);
 
     }
-    
-    
+
+
 }
