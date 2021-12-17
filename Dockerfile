@@ -6,4 +6,4 @@ RUN mvn clean package
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/my-spring-project-0.0.1-SNAPSHOT.jar.jar"]
+CMD ["java", "-jar", "target/my-spring-project-0.0.1-SNAPSHOT.jar"]
