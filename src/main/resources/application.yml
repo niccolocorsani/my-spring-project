@@ -93,7 +93,7 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:mysql://localhost:3306/customer?createDatabaseIfNotExist=true
+    url: jdbc:mysql://db:3306/customer?createDatabaseIfNotExist=true
     username: user
     password: user
   config:
