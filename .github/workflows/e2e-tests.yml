@@ -28,6 +28,9 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
       - name: docker-compose
         run: docker-compose up -d
+      - name: Sleep for 30 seconds
+        run: sleep 60s
+        shell: bash
       - name: check-compose
         run: docker ps -a
       - name: End-to-end tests
