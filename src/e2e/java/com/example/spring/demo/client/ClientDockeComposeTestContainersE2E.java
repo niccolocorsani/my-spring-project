@@ -30,7 +30,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 
-import java.io.File;
 import java.util.Random;
 
 
@@ -71,7 +70,7 @@ class ClientDockeComposeTestContainersE2E {
     public void setup() throws InterruptedException {
 
 
-        baseUrl = "http://localhost:8080/spring-app";
+        baseUrl = "https://localhost:8080/spring-app";
         driver = new ChromeDriver();
         //container.start();
         boolean containerReady = false;
