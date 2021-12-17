@@ -80,10 +80,10 @@ class ClientDockeComposeTestContainersE2E {
         while (containerReady != true) {
             try {
                 driver.get("https://www.google.com/");
-                WebElement wb = driver.findElement(By.xpath("//*[contains(text(),'Accetto')]"));
+            //    WebElement wb = driver.findElement(By.xpath("//*[contains(text(),'Accetto')]"));
 
                 System.err.println(driver.getPageSource());
-                System.out.println(wb.getText());
+              //  System.out.println(wb.getText());
                 Thread.sleep(2000); // wait for container to start
                 i++;
                 if(i == 4) containerReady = true;
@@ -103,7 +103,7 @@ class ClientDockeComposeTestContainersE2E {
         driver.quit();
     }
 
-    @Test
+  /*  @Test
      void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
 
         Random rand = new Random();
@@ -115,7 +115,7 @@ class ClientDockeComposeTestContainersE2E {
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
         assertTrue(wb.getText().contains("test"));
-    }
+    }*/
 
     private void postEmployee(String name, Long id) throws JSONException {
         JSONObject body = new JSONObject();
