@@ -103,6 +103,8 @@ class ClientDockeComposeTestContainersE2E {
         driver.quit();
     }
 
+        @Test
+     void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {}
   /*  @Test
      void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
 

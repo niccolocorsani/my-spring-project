@@ -215,10 +215,6 @@
                                     <includes>
                                         <include>**/*E2E.java</include>
                                     </includes>
-                                    <excludes>
-                                        <exclude>**/*IT.java</exclude>
-                                        <exclude>**/*Test.java</exclude>
-                                    </excludes>
                                 </configuration>
                                 <goals>
                                     <goal>integration-test</goal>
