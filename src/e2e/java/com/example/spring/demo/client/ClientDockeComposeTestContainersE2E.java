@@ -82,13 +82,13 @@ class ClientDockeComposeTestContainersE2E {
                 driver.get("https://www.google.com/");
             //    WebElement wb = driver.findElement(By.xpath("//*[contains(text(),'Accetto')]"));
 
-                System.err.println(driver.getPageSource());
+                //System.err.println(driver.getPageSource());
               //  System.out.println(wb.getText());
                 Thread.sleep(2000); // wait for container to start
                 i++;
                 if(i == 4) containerReady = true;
              //   System.err.println(containerReady);
-             //   postEmployee("test", 1L);
+                postEmployee("test", 1L);
               //  containerReady = true;
             } catch (Exception exception) {
                 exception.printStackTrace();
