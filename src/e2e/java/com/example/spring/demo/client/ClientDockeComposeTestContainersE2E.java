@@ -96,7 +96,7 @@ class ClientDockeComposeTestContainersE2E {
 
     @AfterAll
     public static void teardown() {
-        container.stop();
+       //container.stop();
         driver.quit();
     }
 
