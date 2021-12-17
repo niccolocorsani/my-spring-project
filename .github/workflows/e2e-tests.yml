@@ -33,8 +33,8 @@ jobs:
         shell: bash
       - name: check-compose
         run: docker ps -a
-      - name: logs
-        run:  docker logs my-spring-project_customerservice_1
+     # - name: logs
+      #  run:  docker logs my-spring-project_customerservice_1
       - name: End-to-end tests
         run: xvfb-run mvn verify -P e2e-tests #to run only e2e
       - name: check-compose
