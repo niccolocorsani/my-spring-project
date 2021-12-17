@@ -51,10 +51,10 @@ class ClientDockeComposeTestContainersE2E {
     static final Logger logger = LogManager.getLogger(ClientDockeComposeTestContainersE2E.class.getName());
 
 
-    @SuppressWarnings("rawtypes")
-	@Container
-    public static DockerComposeContainer container =
-            new DockerComposeContainer(new File("./docker-compose.yml"));
+   // @SuppressWarnings("rawtypes")
+	//@Container
+   // public static DockerComposeContainer container =
+        //    new DockerComposeContainer(new File("./docker-compose.yml"));
 
 
     private static WebDriver driver;
@@ -81,6 +81,7 @@ class ClientDockeComposeTestContainersE2E {
                 driver.get("https://www.google.com/");
                 WebElement wb = driver.findElement(By.xpath("//*[contains(text(),'Accetto')]"));
 
+                System.err.println(driver.getPageSource());
                 System.out.println(wb.getText());
                 Thread.sleep(2000); // wait for container to start
              //   System.err.println(containerReady);

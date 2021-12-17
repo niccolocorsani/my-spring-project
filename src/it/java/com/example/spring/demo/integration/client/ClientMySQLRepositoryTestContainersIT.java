@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class ClientMySQLRepositoryTestContainersIT {
+ class ClientMySQLRepositoryTestContainersIT {
 
 
     @Autowired
