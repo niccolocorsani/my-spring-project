@@ -26,8 +26,8 @@ jobs:
             ~/.sonar/cache
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
           restore-keys: ${{ runner.os }}-m2-
-     # - name: docker-compose
-      #  run: docker-compose up -d
+      - name: docker-compose
+        run: docker-compose up -d
       - name: Sleep for 30 seconds
         run: sleep 60s
         shell: bash
