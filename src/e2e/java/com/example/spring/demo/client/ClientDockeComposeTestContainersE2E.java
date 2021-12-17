@@ -71,7 +71,7 @@ class ClientDockeComposeTestContainersE2E {
     public void setup() throws InterruptedException {
 
 
-        baseUrl = "https://localhost:8080/spring-app";
+        baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
         //container.start();
         boolean containerReady = false;
