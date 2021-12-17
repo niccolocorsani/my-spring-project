@@ -33,13 +33,13 @@ jobs:
         shell: bash
       - name: check-compose
         run: docker ps -a
-     # - name: logs
-      #  run:  docker logs my-spring-project_customerservice_1
+      - name: logs
+        run:  docker logs my-spring-project_customerservice_1
       - name: End-to-end tests
        # run: mvn -Dtest=*E2E
-        run: xvfb-run mvn verify -P e2e-tests -P!add-test-source
+        run: xvfb-run mvn verify -P e2e-tests
       - name: check-compose
         run: docker ps -a
-        
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
