@@ -78,10 +78,14 @@ class ClientDockeComposeTestContainersE2E {
         boolean containerReady = false;
         while (containerReady != true) {
             try {
-                Thread.sleep(20000); // wait for container to start
-                System.err.println(containerReady);
-                postEmployee("test", 1L);
-                containerReady = true;
+                driver.get("https://www.google.com/");
+                WebElement wb = driver.findElement(By.xpath("//*[contains(text(),'Accetto')]"));
+
+                System.out.println(wb.getText());
+                Thread.sleep(2000); // wait for container to start
+             //   System.err.println(containerReady);
+             //   postEmployee("test", 1L);
+              //  containerReady = true;
             } catch (Exception exception) {
                 exception.printStackTrace();
                 System.err.println(containerReady);
