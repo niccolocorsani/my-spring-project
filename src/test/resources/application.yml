@@ -1,5 +1,10 @@
 
 server:
+  error:
+  include-message: always
+  include-binding-errors: always
+  include-stacktrace: on_trace_param
+  include-exception: false
   port: 8080
   servlet:
     context-path: /spring-app
@@ -8,9 +13,6 @@ spring:
     name: spring-app
   profiles:
     active: none
-
-
-
 
 ---
 spring:
