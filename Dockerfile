@@ -1,4 +1,4 @@
-
+# select parent image
 FROM maven:3.6.3-jdk-8
 
 # copy the source tree and the pom.xml to our new container
@@ -6,8 +6,6 @@ COPY ./ ./
 
 # package our application code
 RUN mvn clean package
-#FROM openjdk:11-jre
-EXPOSE 8080
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+# set the startup command to execute the jar
+CMD ["java", "-jar", "target/my-spring-project-0.0.1-SNAPSHOT.jar.jar"]
