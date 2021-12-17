@@ -3,6 +3,8 @@ package com.example.spring.demo.controllers.client;
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.services.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,5 +48,17 @@ public class ClientController {
     public void deleteClientCenter(@PathVariable Long idClient) {
         this.clientService.deleteClientById(idClient);
     }
-   
+
+
+
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<String> handleNullPointerException(Exception e)
+    {
+        String error = "";
+        error = e.getMessage();
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        return new ResponseEntity<String>(error, status);
+    }
+
 }
