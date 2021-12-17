@@ -1,5 +1,5 @@
 FROM maven:latest as builder
-RUN mvn clean install
+RUN mvn  install
 
 
 FROM openjdk:11-jre
