@@ -27,8 +27,7 @@ services:
 
     depends_on:
       - db
-  #  environment:
-   #   SPRING_PROFILES_ACTIVE: MySQLdocker
-
+    environment:
+      SPRING_PROFILES_ACTIVE: MySQLdocker
 #volumes: #Dichiarazione del volume, obbligatoria
  # db5:

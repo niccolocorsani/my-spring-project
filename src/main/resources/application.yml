@@ -7,7 +7,7 @@ spring:
   application:
     name: spring-app
   profiles:
-    active: MySQL2 #Da ricambiare con MySQLDocker per fare il docker
+    active: MySQLDocker #Da ricambiare con MySQLDocker per fare il docker
 
 ---
 spring:
@@ -93,7 +93,7 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:mysql://db:3306/customer?createDatabaseIfNotExist=true
+    url: jdbc:mysql://db:3306/spring-app?createDatabaseIfNotExist=true
     username: user
     password: user
   config:
