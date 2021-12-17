@@ -36,9 +36,10 @@ jobs:
      # - name: logs
       #  run:  docker logs my-spring-project_customerservice_1
       - name: End-to-end tests
-        run: mvn -Dtest=*E2E
-       # run: xvfb-run mvn verify -P e2e-tests #to run only e2e
+       # run: mvn -Dtest=*E2E
+        run: xvfb-run mvn verify -P e2e-tests -P!add-test-source
       - name: check-compose
         run: docker ps -a
+        
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
