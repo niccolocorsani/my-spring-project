@@ -7,7 +7,7 @@ spring:
   application:
     name: spring-app
   profiles:
-    active: MySQLDocker #Da ricambiare con MySQLDocker per fare il docker
+    active: none #Da ricambiare con MySQLDocker per fare il docker
 
 ---
 spring:

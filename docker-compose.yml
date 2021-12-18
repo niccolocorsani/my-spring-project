@@ -2,7 +2,7 @@
 version: '3.3'
 services:
 
-  db:
+  my-sql-db:
     image: mysql:latest
    # volumes:
    #   - db5:/var/lib/mysql
@@ -11,8 +11,10 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=user
       - MYSQL_USER=user
+      - MYSQL_DATABASE=spring-app
+
     ports:
-      - "3307:3306"
+      - "3306:3306"
 
 
 
@@ -28,6 +30,6 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_PROFILES_ACTIVE: MySQLdocker
+      SPRING_DATASOURCE_URL: jdbc:mysql://my-sql-db:3306/spring-app?createDatabaseIfNotExist=true
 #volumes: #Dichiarazione del volume, obbligatoria
  # db5:
