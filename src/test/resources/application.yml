@@ -93,3 +93,24 @@ spring:
   config:
     activate:
       on-profile: MySQL2
+
+
+---
+
+spring:
+  jpa:
+    open-in-view: false #per levare warnig OpenSessionInView
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: CET
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://db:3307/spring-app?createDatabaseIfNotExist=true
+    username: user
+    password: user
+  config:
+    activate:
+      on-profile: MySQLdocker
