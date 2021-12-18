@@ -38,8 +38,8 @@ jobs:
       - name: docker-version
         run: docker version
       - name: End-to-end tests
-       # run: mvn -Dtest=*E2E*
-        run: xvfb-run mvn verify -P e2e-tests
+        run: mvn -Dtest=ClientDockeComposeTestContainersE2E test
+        #run: xvfb-run mvn verify -P e2e-tests
       - name: check-compose
         run: docker ps -a
 

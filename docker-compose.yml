@@ -30,6 +30,7 @@ services:
     depends_on:
       - my-sql-db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://my-sql-db:3306/spring-app?createDatabaseIfNotExist=true
+      SPRING_PROFILES_ACTIVE: MySQLdocker
+
 #volumes: #Dichiarazione del volume, obbligatoria
  # db5:
