@@ -85,15 +85,16 @@ spring:
 spring:
   jpa:
     open-in-view: false #per levare warnig OpenSessionInView
+    show-sql: true
     properties:
       hibernate:
         jdbc:
           time_zone: CET
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
   datasource:
-    url: jdbc:mysql://db:3307/spring-app?createDatabaseIfNotExist=true
+    url: jdbc:mysql://my-sql-db:3306/customer?createDatabaseIfNotExist=true
     username: user
     password: user
   config:

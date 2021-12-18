@@ -69,7 +69,7 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:mysql://mysql-db2:3306/customer?createDatabaseIfNotExist=true
+    url: jdbc:mysql://my-sql-db:3306/customer?createDatabaseIfNotExist=true
     username: operations
     password: operations
   config:
