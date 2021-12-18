@@ -26,15 +26,17 @@ jobs:
             ~/.sonar/cache
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
           restore-keys: ${{ runner.os }}-m2-
-      - name: docker-compose
-        run: docker-compose up -d
-      - name: Sleep for 30 seconds
-        run: sleep 60s
+    #  - name: docker-compose
+     #   run: docker-compose up -d
+      - name: Sleep for 15 seconds
+        run: sleep 15s
         shell: bash
       - name: check-compose
         run: docker ps -a
-      - name: logs
-        run:  docker logs my-spring-project_customerservice_1
+    #  - name: logs
+     #   run:  docker logs my-spring-project_customerservice_1 #to debug
+      - name: docker-version
+        run: docker version
       - name: End-to-end tests
        # run: mvn -Dtest=*E2E
         run: xvfb-run mvn verify -P e2e-tests
