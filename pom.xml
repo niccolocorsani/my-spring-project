@@ -196,6 +196,7 @@
     </build>
     <profiles>
         <profile>
+            
             <id>e2e-tests</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
