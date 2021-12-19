@@ -10,13 +10,12 @@ services:
     #container_name: mysql-db
     environment:
       - MYSQL_ROOT_PASSWORD=user
+      - MYSQL_PASSWORD=user
       - MYSQL_USER=user
       - MYSQL_DATABASE=spring-app
 
     ports:
       - "3306:3306"
-
-
 
   customerservice:
     image: customer-service

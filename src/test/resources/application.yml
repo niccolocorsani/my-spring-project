@@ -82,7 +82,7 @@ spring:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring-app?createDatabaseIfNotExist=true
+    url: jdbc:mysql://127.0.0.1:3306/spring-app?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true
     username: operations
     password: operations
   jpa:
@@ -108,7 +108,7 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:mysql://my-sql-db:3306/spring-app?createDatabaseIfNotExist=true
+    url: jdbc:mysql://my-sql-db:3306/spring-app?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true
     username: user
     password: user
   config:

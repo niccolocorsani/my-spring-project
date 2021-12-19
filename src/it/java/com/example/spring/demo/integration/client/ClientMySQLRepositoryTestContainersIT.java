@@ -41,7 +41,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
+        // provare a metter le configurazioni come questo che funziona
         registry.add("spring.datasource.url", () -> "jdbc:mysql://" + container.getContainerIpAddress() + ":" + container.getMappedPort(3306) + "/" + "test?useSSL=false");
+        System.err.println(container.getContainerIpAddress());
         registry.add("spring.datasource.password", container::getPassword);
         registry.add("spring.datasource.username", container::getUsername);
         registry.add("spring.jpa.hibernate.ddl-auto", () -> "create-drop");
