@@ -58,6 +58,8 @@ spring:
 
 ---
 
+
+
 spring:
   jpa:
     open-in-view: false #per levare warnig OpenSessionInView
