@@ -39,7 +39,7 @@ jobs:
         run: docker version
       - name: End-to-end tests
       #  run: mvn -Dtest=ClientDockeComposeTestContainersE2E test
-        run: xvfb-run mvn verify -Pe2e-tests -P!unit-integration-tests
+        run: xvfb-run mvn verify -Pe2e-tests
 
       - name: check-compose
         run: docker ps -a
