@@ -34,7 +34,6 @@ import java.io.File;
 import java.util.Random;
 
 
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -43,8 +42,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class ClientDockeComposeTestContainersE2E {
-
-
 
 
     @SuppressWarnings("rawtypes")
@@ -76,7 +73,7 @@ class ClientDockeComposeTestContainersE2E {
         while (containerReady != true) {
             try {
                 Thread.sleep(10000); // wait for container to start
-                postEmployee("test", 1L);
+                postClient("test", 1L);
                 containerReady = true;
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -87,7 +84,7 @@ class ClientDockeComposeTestContainersE2E {
 
     @AfterAll
     public static void teardown() {
-        //container.stop();
+        container.stop();
         driver.quit();
     }
 
@@ -98,15 +95,14 @@ class ClientDockeComposeTestContainersE2E {
         Random rand = new Random();
         Thread.sleep(1000);
         long generatedLong = rand.nextLong();
-        postEmployee("test", generatedLong);
+        postClient("test", generatedLong);
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
         System.err.println(wb.getText());
         assertTrue(wb.getText().contains("test"));
     }
-
-    private void postEmployee(String name, Long id) throws JSONException {
+    private void postClient(String name, Long id) throws JSONException {
         JSONObject body = new JSONObject();
         body.put("firstName", name);
         body.put("id", id);
@@ -118,6 +114,4 @@ class ClientDockeComposeTestContainersE2E {
                 .put(baseUrl + "/client/putClient", entity);
 
     }
-
-
 }
