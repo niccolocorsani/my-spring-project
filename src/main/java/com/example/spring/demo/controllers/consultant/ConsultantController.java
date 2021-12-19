@@ -56,7 +56,7 @@ public class ConsultantController {
         String error = "";
         error = e.getMessage();
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        return new ResponseEntity<String>(error, status);
+        return new ResponseEntity<>(error, status);
     }
    
 }

@@ -67,7 +67,7 @@ class ClientDockeComposeTestContainersE2E {
 
         baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
-        //container.start();
+        container.start();
         boolean containerReady = false;
         int i = 0;
         while (containerReady != true) {
@@ -76,8 +76,6 @@ class ClientDockeComposeTestContainersE2E {
                 postClient("test", 1L);
                 containerReady = true;
             } catch (Exception exception) {
-                exception.printStackTrace();
-                System.err.println(containerReady);
             }
         }
     }
@@ -99,7 +97,6 @@ class ClientDockeComposeTestContainersE2E {
         Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
-        System.err.println(wb.getText());
         assertTrue(wb.getText().contains("test"));
     }
     private void postClient(String name, Long id) throws JSONException {

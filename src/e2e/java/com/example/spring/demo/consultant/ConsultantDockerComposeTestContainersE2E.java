@@ -76,7 +76,6 @@ public class ConsultantDockerComposeTestContainersE2E {
                     postConsultant("test", 1L);
                     containerReady = true;
                 } catch (Exception exception) {
-                    exception.printStackTrace();
                     System.err.println(containerReady);
                 }
             }
