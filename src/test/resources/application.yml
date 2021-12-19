@@ -57,9 +57,6 @@ spring:
       on-profile: MySQL
 
 ---
-
-
-
 spring:
   jpa:
     open-in-view: false #per levare warnig OpenSessionInView
@@ -95,8 +92,6 @@ spring:
   config:
     activate:
       on-profile: MySQL2
-
-
 ---
 
 spring:
