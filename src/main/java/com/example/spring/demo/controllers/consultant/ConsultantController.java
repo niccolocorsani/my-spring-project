@@ -1,6 +1,5 @@
 package com.example.spring.demo.controllers.consultant;
 
-import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.model.consultant.Consultant;
 import com.example.spring.demo.services.consultant.ConsultantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/consultant")
 public class ConsultantController {
@@ -33,7 +31,6 @@ public class ConsultantController {
 
     @PutMapping(value = "/putConsultant")
     public Consultant putConsultant(@RequestBody ConsultantDTO consultant) {
-
         Consultant c = new Consultant();
         c.setId(consultant.getId());
         c.setFirstName(consultant.getFirstName());
