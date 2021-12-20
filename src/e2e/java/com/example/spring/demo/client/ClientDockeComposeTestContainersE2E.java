@@ -82,17 +82,13 @@ class ClientDockeComposeTestContainersE2E {
     @Test
     void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
         Random rand = new Random();
-        Thread.sleep(1000);
         long generatedLong = rand.nextLong();
         postClient("test", generatedLong);
-        Thread.sleep(1000);
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
         assertTrue(wb.getText().contains("test"));
         container.stop();
-   //     container.withExposedService("customerservice_1",8080).waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200)).start();
-  //      wb = driver.findElement(By.tagName("pre"));
-  //      assertTrue(wb.getText().contains("test"));
+
     }
 
     private void postClient(String name, Long id) throws JSONException {
