@@ -42,10 +42,16 @@ public class ClientController {
 
 
     @PutMapping( value = "/updateClient")
-    public Client updateClient(@RequestBody Client client) {
+    public Client updateClient(@RequestBody ClientDTO client) {
 
-        this.clientService.updateClientById(client);
-        return client;
+        Client c = new Client();
+        c.setId(client.getId());
+        c.setFirstName(client.getFirstName());
+        c.setLastName(client.getLastName());
+        c.setAppointments(client.getAppointments());
+        this.clientService.insertNewClient(c);
+        this.clientService.updateClientById(c);
+        return c;
     }
     
     
