@@ -52,7 +52,6 @@ public class ConsultantDockerComposeTestContainersE2E {
         @Container
         public static DockerComposeContainer compose =
                 new DockerComposeContainer(new File("./docker-compose.yml"))
-                        //.waitingFor("customerservice_1",Wait.forLogMessage("*8080*",1))
                         .waitingFor("customerservice_1", Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200).withStartupTimeout(Duration.ofMinutes(10)));
 
 
@@ -90,7 +89,6 @@ public class ConsultantDockerComposeTestContainersE2E {
             postConsultant("test", generatedLong);
             driver.get(baseUrl + "/consultant/api/consultants");
             WebElement wb = driver.findElement(By.tagName("pre"));
-            System.err.println(wb.getText());
             assertTrue(wb.getText().contains("test"));
             wb = driver.findElement(By.tagName("pre"));
             assertTrue(wb.getText().contains("test"));

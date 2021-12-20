@@ -53,7 +53,6 @@ class ConsultantControllerTest {
 		List<Consultant> consultants = new ArrayList<>();
 		consultants.add(new Consultant(1L, "Marco", "Rossi"));
 		consultants.add(new Consultant(2L, "Francesco", ""));
-		System.err.println("oo");
 
 		when(consultantService.getAllConsultants()).thenReturn(consultants);
 
@@ -140,7 +139,6 @@ class ConsultantControllerTest {
 		MvcResult result = this.mvc
 				.perform(put("/consultant/putConsultant").contentType(MediaType.APPLICATION_JSON).content("wrong-content")).andReturn();
 		String json = result.getResponse().getContentAsString();
-		System.out.println(json.length());
 		assertTrue(json.length()>0);
 	}
 }

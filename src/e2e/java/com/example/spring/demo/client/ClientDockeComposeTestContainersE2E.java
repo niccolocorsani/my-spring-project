@@ -81,7 +81,7 @@ class ClientDockeComposeTestContainersE2E {
 
 
     @Test
-    void startAndStopContainerPersistenceTest() throws JSONException, InterruptedException {
+    void startAndStopContainerPersistenceTest() throws JSONException {
         Random rand = new Random();
         long generatedLong = rand.nextLong();
         postClient("test", generatedLong);

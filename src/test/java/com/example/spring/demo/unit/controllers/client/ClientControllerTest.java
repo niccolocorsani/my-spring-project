@@ -126,11 +126,8 @@ class ClientControllerTest {
         String json = null;
         try {
             json = result.getResponse().getContentAsString();
-            System.err.println(json);
             assertEquals(0, json.length());
         } catch (Exception e) {
-            System.out.println(json);
-
             assertTrue(false);
         }
 
@@ -142,7 +139,6 @@ class ClientControllerTest {
         MvcResult result = this.mvc
                 .perform(put("/client/putClient").contentType(MediaType.APPLICATION_JSON).content("wrong-content")).andReturn();
         String json = result.getResponse().getContentAsString();
-        System.out.println(json.length());
         assertTrue(json.length() > 0);
 
     }
