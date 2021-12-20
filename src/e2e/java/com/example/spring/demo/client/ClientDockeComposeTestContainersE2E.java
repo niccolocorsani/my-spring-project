@@ -20,6 +20,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.testcontainers.containers.DockerComposeContainer;
 
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -44,10 +45,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ClientDockeComposeTestContainersE2E {
 
 
+
+
     @SuppressWarnings("rawtypes")
     @Container
     public static DockerComposeContainer container =
-            new DockerComposeContainer(new File("./docker-compose.yml"));
+            new DockerComposeContainer(new File("./docker-compose.yml")).withExposedService("customerservice_1",8080)
+                    .waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200));
+
 
 
     private static WebDriver driver;
@@ -63,21 +68,8 @@ class ClientDockeComposeTestContainersE2E {
 
     @BeforeEach
     public void setup() throws InterruptedException {
-
-
         baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
-        container.start();
-        boolean containerReady = false;
-        int i = 0;
-        while (containerReady != true) {
-            try {
-                Thread.sleep(10000); // wait for container to start
-                postClient("test", 1L);
-                containerReady = true;
-            } catch (Exception exception) {
-            }
-        }
     }
 
     @AfterAll
