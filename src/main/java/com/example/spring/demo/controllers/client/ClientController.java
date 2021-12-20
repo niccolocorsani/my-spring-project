@@ -30,9 +30,11 @@ public class ClientController {
     }
 
     @PutMapping( value = "/putClient")
-    public Client putClient(@RequestBody Client client) {
-        this.clientService.insertNewClient(client);
-        return client;
+    public Client putClient(@RequestBody ClientDTO client) {
+	    Client c = new Client();
+	    c.setId(client.getId());
+        this.clientService.insertNewClient(c);
+        return c;
     }
 
 
@@ -58,7 +60,6 @@ public class ClientController {
         String error = "";
         error = e.getMessage();
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        System.out.println("errore.......");
         return new ResponseEntity<>(error, status);
     }
 

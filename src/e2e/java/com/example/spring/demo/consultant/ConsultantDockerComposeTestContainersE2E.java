@@ -52,7 +52,7 @@ public class ConsultantDockerComposeTestContainersE2E {
         @Container
         public static DockerComposeContainer compose =
                 new DockerComposeContainer(new File("./docker-compose.yml"))
-                        .withExposedService("customerservice_1",8080)
+                        //.waitingFor("customerservice_1",Wait.forLogMessage("*8080*",1))
                         .waitingFor("customerservice_1", Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200).withStartupTimeout(Duration.ofMinutes(10)));
 
 
@@ -83,7 +83,7 @@ public class ConsultantDockerComposeTestContainersE2E {
 
 
         @Test
-        void dockerComposeBehavior() throws JSONException, InterruptedException {
+        void dockerComposeBehavior() throws JSONException {
 
             Random rand = new Random();
             long generatedLong = rand.nextLong();

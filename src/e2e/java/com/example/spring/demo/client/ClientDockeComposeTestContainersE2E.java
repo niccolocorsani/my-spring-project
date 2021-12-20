@@ -32,6 +32,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Random;
 
 
@@ -51,7 +52,7 @@ class ClientDockeComposeTestContainersE2E {
     @Container
     public static DockerComposeContainer container =
             new DockerComposeContainer(new File("./docker-compose.yml")).withExposedService("customerservice_1",8080)
-                    .waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200));
+                    .waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200).withStartupTimeout(Duration.ofMinutes(10));
 
 
 
