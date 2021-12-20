@@ -92,7 +92,7 @@ class ClientDockeComposeTestContainersE2E {
         assertTrue(wb.getText().contains("test"));
         container.stop();
         container.start();
-        container.waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200));
+        container.withExposedService("customerservice_1",8080).waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200));
         wb = driver.findElement(By.tagName("pre"));
         assertTrue(wb.getText().contains("test"));
     }

@@ -22,9 +22,9 @@ public class otherTest {
     @Test
     public void start() {
 
-        MySpringProjectApplication mySpringProjectApplication = new MySpringProjectApplication();
+        String[] args= {"test1","test2"};
         assertDoesNotThrow(() -> {
-            mySpringProjectApplication.main(null);
+            MySpringProjectApplication.main(args);
         });
     }
 
