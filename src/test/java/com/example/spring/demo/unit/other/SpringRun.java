@@ -20,8 +20,9 @@ public class SpringRun {
     @Test
     public void start() {
 
-        ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(MySpringProjectApplication.class);
-        assertNotNull(configurableApplicationContext);
+        MySpringProjectApplication mySpringProjectApplication = new MySpringProjectApplication();
+        mySpringProjectApplication.main(null);
+
     }
 
 
