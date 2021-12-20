@@ -4,8 +4,8 @@ services:
 
   my-sql-db:
     image: mysql:latest
-   # volumes:
-   #   - db5:/var/lib/mysql
+    volumes:
+      - db5:/var/lib/mysql
 
     #container_name: mysql-db
     environment:
@@ -31,5 +31,5 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: MySQLdocker
 
-#volumes: #Dichiarazione del volume, obbligatoria
- # db5:
+volumes: 
+  db5:
