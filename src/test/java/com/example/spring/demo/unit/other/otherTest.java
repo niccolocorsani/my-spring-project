@@ -16,12 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(SpringRunner.class)
-public class otherTest {
+ class otherTest {
 
 
     @Test
-    public void start() {
-
+     void start() {
         String[] args= {"test1","test2"};
         assertDoesNotThrow(() -> {
             MySpringProjectApplication.main(args);
@@ -31,7 +30,7 @@ public class otherTest {
 
 
     @Test
-    public void controllersInstances() {
+     void controllersInstances() {
 
         ClientController clientController = new ClientController();
         assertNotNull(clientController);

@@ -1,6 +1,7 @@
 package com.example.spring.demo.unit.controllers.client;
 
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -130,5 +131,14 @@ class ClientControllerTest {
 		}
 
 	}
+	@Test
+	void handleError() throws Exception {
 
+		MvcResult result = this.mvc
+				.perform(put("/client/putClient").contentType(MediaType.APPLICATION_JSON).content("wrong-content")).andReturn();
+		String json = result.getResponse().getContentAsString();
+		System.out.println(json.length());
+		assertTrue(json.length()>0);
+
+	}
 }

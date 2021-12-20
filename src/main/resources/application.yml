@@ -7,12 +7,12 @@ spring:
   application:
     name: spring-app
   profiles:
-    active: MySQLdocker #Da ricambiare con MySQLDocker per fare il docker
+    active: none
 
 ---
 spring:
   jpa:
-    open-in-view: true #per levare warnig OpenSessionInView
+    open-in-view: true
     properties:
       hibernate:
         jdbc:
@@ -39,7 +39,6 @@ spring:
 ---
 spring:
 
-  #autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
 
   jpa:
     open-in-view: true #per levare warnig OpenSessionInView

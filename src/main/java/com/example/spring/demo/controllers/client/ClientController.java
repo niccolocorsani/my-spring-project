@@ -58,6 +58,7 @@ public class ClientController {
         String error = "";
         error = e.getMessage();
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        System.out.println("errore.......");
         return new ResponseEntity<>(error, status);
     }
 

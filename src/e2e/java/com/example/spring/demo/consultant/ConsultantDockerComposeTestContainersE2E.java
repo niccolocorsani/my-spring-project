@@ -32,6 +32,7 @@ import org.springframework.http.MediaType;
 
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -48,8 +49,9 @@ public class ConsultantDockerComposeTestContainersE2E {
         @SuppressWarnings("rawtypes")
         @Container
         public static DockerComposeContainer container =
-                new DockerComposeContainer(new File("./docker-compose.yml")).withExposedService("customerservice_1",8080)
-                        .waitingFor("customerservice_1", Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200));;
+                new DockerComposeContainer(new File("./docker-compose.yml"))
+                        .withExposedService("customerservice_1",8080)
+                        .waitingFor("customerservice_1", Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200).withStartupTimeout(Duration.ofMinutes(15)));
 
 
         private static WebDriver driver;
@@ -87,6 +89,10 @@ public class ConsultantDockerComposeTestContainersE2E {
             driver.get(baseUrl + "/consultant/api/consultants");
             WebElement wb = driver.findElement(By.tagName("pre"));
             System.err.println(wb.getText());
+            assertTrue(wb.getText().contains("test"));
+            container.stop();
+            container.withExposedService("customerservice_1",8080).waitingFor("customerservice_1",Wait.forHttp("/spring-app/consultants/api/consultants").forStatusCode(200).withStartupTimeout(Duration.ofMinutes(15))).start();
+            wb = driver.findElement(By.tagName("pre"));
             assertTrue(wb.getText().contains("test"));
         }
 
