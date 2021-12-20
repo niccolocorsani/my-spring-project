@@ -38,6 +38,7 @@ public class ConsultantController {
         c.setId(consultant.getId());
         c.setFirstName(consultant.getFirstName());
         c.setLastName(consultant.getLastName());
+        c.setUserName(consultant.getUserName());
         c.setAppointments(consultant.getAppointments());
         this.consultantService.insertNewConsultant(c);
         return c;
@@ -49,6 +50,7 @@ public class ConsultantController {
         c.setId(consultant.getId());
         c.setFirstName(consultant.getFirstName());
         c.setLastName(consultant.getLastName());
+        c.setUserName(consultant.getUserName());
         c.setAppointments(consultant.getAppointments());
         this.consultantService.updateConsultantById(c);
         return c;

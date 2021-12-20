@@ -34,7 +34,8 @@ public class ClientController {
 	    Client c = new Client();
 	    c.setId(client.getId());
 	    c.setFirstName(client.getFirstName());
-	    c.setLastName(client.getLastName());
+        c.setUserName(client.getUserName());
+        c.setLastName(client.getLastName());
 	    c.setAppointments(client.getAppointments());
         this.clientService.insertNewClient(c);
         return c;
@@ -48,6 +49,7 @@ public class ClientController {
         c.setId(client.getId());
         c.setFirstName(client.getFirstName());
         c.setLastName(client.getLastName());
+        c.setUserName(client.getUserName());
         c.setAppointments(client.getAppointments());
         this.clientService.insertNewClient(c);
         this.clientService.updateClientById(c);

@@ -147,24 +147,5 @@ class ClientControllerTest {
 
     }
 
-///TODO
-   /* @Test
-    void testControllerDTO() throws Exception {
 
-        ClientDTO client = new ClientDTO();
-        client.setId(1L);
-        client.setFirstName("Marco");
-        client.setLastName("rossi");
-        client.setAppointments(null);
-        ObjectMapper mapper = new ObjectMapper();
-        String clientString = mapper.writeValueAsString(client);
-        this.mvc.perform(put("/client/putClient").contentType(MediaType.APPLICATION_JSON).content(clientString)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(jsonPath("id", is(1)))
-                .andExpect(jsonPath("firstName", is(client.getFirstName())))
-                .andExpect(jsonPath("lastName", is(client.getLastName())))
-                .andExpect(jsonPath("id", is(client.getId())))
-                .andExpect(jsonPath("firstName", is(client.getFirstName())))
-        .andExpect(jsonPath("appointments", is(client.getFirstName())));
-
-    }*/
 }
