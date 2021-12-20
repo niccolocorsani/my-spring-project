@@ -32,7 +32,7 @@ public class ConsultantController {
 
 
     @PutMapping(value = "/putConsultant")
-    public Consultant putConsultant(@RequestBody Consultant consultant) {
+    public Consultant putConsultant(@RequestBody ConsultantDTO consultant) {
 
         Consultant c = new Consultant();
         c.setId(consultant.getId());
@@ -44,7 +44,7 @@ public class ConsultantController {
     }
 
     @PutMapping(value = "/updateConsultant")
-    public Consultant updateConsultant(@RequestBody Consultant consultant) {
+    public Consultant updateConsultant(@RequestBody ConsultantDTO consultant) {
         Consultant c = new Consultant();
         c.setId(consultant.getId());
         c.setFirstName(consultant.getFirstName());

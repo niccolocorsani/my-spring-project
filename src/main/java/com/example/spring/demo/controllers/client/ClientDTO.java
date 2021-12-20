@@ -7,6 +7,18 @@ import java.util.List;
 
 public class ClientDTO {
 
+    private Long id;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String userName;
+
+    private List<Appointment> appointments = new ArrayList<>();
+
+
+
     public Long getId() {
         return id;
     }
@@ -46,15 +58,5 @@ public class ClientDTO {
     public void setAppointments(List<Appointment> appointments) {
         this.appointments = appointments;
     }
-
-    private Long id;
-
-    private String firstName;
-
-    private String lastName;
-
-    private String userName;
-
-    private List<Appointment> appointments = new ArrayList<>();
 
 }
