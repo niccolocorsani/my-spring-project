@@ -67,7 +67,7 @@ class ClientDockeComposeTestContainersE2E {
 
 
     @BeforeEach
-    public void setup() throws InterruptedException {
+    public void setup()  {
         baseUrl = "http://localhost:8080/spring-app";
         driver = new ChromeDriver();
     }
@@ -90,7 +90,13 @@ class ClientDockeComposeTestContainersE2E {
         driver.get(baseUrl + "/client/api/clients");
         WebElement wb = driver.findElement(By.tagName("pre"));
         assertTrue(wb.getText().contains("test"));
+        container.stop();
+        container.start();
+        container.waitingFor("customerservice_1",Wait.forHttp("/spring-app/client/api/clients").forStatusCode(200));
+        wb = driver.findElement(By.tagName("pre"));
+        assertTrue(wb.getText().contains("test"));
     }
+
     private void postClient(String name, Long id) throws JSONException {
         JSONObject body = new JSONObject();
         body.put("firstName", name);
