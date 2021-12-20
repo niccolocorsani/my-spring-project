@@ -86,11 +86,13 @@ class ConsultantControllerTest {
 		Consultant consultant = new Consultant();
 		consultant.setId(1L);
 		consultant.setFirstName("Marco");
+		consultant.setUserName("user");
 		ObjectMapper mapper = new ObjectMapper();
 		String consultantString = mapper.writeValueAsString(consultant);
 		this.mvc.perform(put("/consultant/putConsultant").contentType(MediaType.APPLICATION_JSON)
 				.content(consultantString).accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
-				.andExpect(jsonPath("id", is(1))).andExpect(jsonPath("firstName", is("Marco")));
+				.andExpect(jsonPath("id", is(1))).andExpect(jsonPath("firstName", is("Marco")))
+                .andExpect(jsonPath("userName", is("user")));
 
 	}
 
