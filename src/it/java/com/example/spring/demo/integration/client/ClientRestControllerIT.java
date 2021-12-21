@@ -50,7 +50,6 @@ public class ClientRestControllerIT {
 
         Client saved = response.getBody().as(Client.class);
 
-        Optional<Client> c = clientRepository.findById(saved.getId());
 
         assertEquals(clientRepository.findById(saved.getId()).get().getFirstName(),saved.getFirstName());
     }

@@ -1,7 +1,6 @@
 package com.example.spring.demo.unit.controllers.client;
 
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -9,10 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.spring.demo.controllers.client.ClientController;
-import com.example.spring.demo.controllers.client.ClientDTO;
 import com.example.spring.demo.model.client.Client;
 import com.example.spring.demo.services.client.ClientService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
