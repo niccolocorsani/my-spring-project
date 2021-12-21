@@ -50,7 +50,6 @@ public class ConsultantRestControllerIT {
 
         Consultant saved = response.getBody().as(Consultant.class);
 
-        Optional<Consultant> c = consultantRepository.findById(saved.getId());
 
         assertEquals(consultantRepository.findById(saved.getId()).get().getFirstName(),saved.getFirstName());
     }
