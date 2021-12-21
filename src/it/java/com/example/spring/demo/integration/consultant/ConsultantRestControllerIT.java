@@ -20,7 +20,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-import java.util.Optional;
 
 
 @RunWith(SpringRunner.class)
