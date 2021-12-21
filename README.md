@@ -3,7 +3,7 @@
 From coverage-jacoco.yml: ![Coverage](.github/badges/jacoco.svg)
 
 
-SonarCloud:[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=bugs)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project)[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=coverage)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project)[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project)[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project)
+SonarCloud: [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=bugs)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=coverage)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=niccolocorsani_my-spring-project&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=niccolocorsani_my-spring-project)
 
 
 
