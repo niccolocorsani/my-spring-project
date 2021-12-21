@@ -39,6 +39,6 @@ jobs:
       - name: Coveralls
         run: >
           mvn coveralls:report
-          -DrepoToken=${{ secrets.COVERALL_REPO_TOKEN }}
+          --define repoToken=${{ secrets.COVERALL_REPO_TOKEN }}
 
 
