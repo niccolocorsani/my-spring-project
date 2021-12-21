@@ -128,8 +128,8 @@
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
                 <configuration>
-          <!--<repoToken>4TGqA2VzjDDJNHlvt6mWltXzRf2ft8c81
-                    </repoToken>-->
+                    <repoToken>yourcoverallsprojectrepositorytoken
+                    </repoToken>
                 </configuration>
                 <dependencies>
                     <dependency>
