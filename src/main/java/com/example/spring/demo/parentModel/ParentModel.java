@@ -5,7 +5,7 @@ import com.example.spring.demo.model.appoitmnent.Appointment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParentModelClass {
+public class ParentModel {
 
 
 

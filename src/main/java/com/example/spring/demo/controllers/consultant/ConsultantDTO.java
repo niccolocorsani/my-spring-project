@@ -1,12 +1,12 @@
 package com.example.spring.demo.controllers.consultant;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
-import com.example.spring.demo.parentModel.ParentModelClass;
+import com.example.spring.demo.parentModel.ParentModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsultantDTO extends ParentModelClass {
+public class ConsultantDTO extends ParentModel {
 
 
     private Long id;
