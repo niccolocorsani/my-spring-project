@@ -1,7 +1,7 @@
 package com.example.spring.demo.controllers.consultant;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
-import com.example.spring.demo.parentModel.ParentModel;
+import com.example.spring.demo.parent_model.ParentModel;
 
 import java.util.ArrayList;
 import java.util.List;

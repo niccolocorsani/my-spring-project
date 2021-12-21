@@ -1,4 +1,4 @@
-package com.example.spring.demo.parentModel;
+package com.example.spring.demo.parent_model;
 
 import com.example.spring.demo.model.appoitmnent.Appointment;
 
@@ -40,10 +40,6 @@ public class ParentModel {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -56,7 +52,4 @@ public class ParentModel {
         return appointments;
     }
 
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
 }
