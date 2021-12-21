@@ -36,10 +36,10 @@ jobs:
         run: mvn -B verify -P!e2e-tests org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=niccolocorsani_my-spring-project
         #-P !e2e-tests to exclude from build
 
-      - name: 🛠 Coveralls Coverage Report Setup
-        run: sed -i.bak 's/yourcoverallsprojectrepositorytoken/${{ secrets.COVERALL_REPO_TOKEN }}/g' pom.xml
       - name: Coveralls
         run: >
           mvn coveralls:report
- 
+          -DrepoToken=$COVERALLS_REPO_TOKEN
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
 
