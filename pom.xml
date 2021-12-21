@@ -120,10 +120,7 @@
             <version>3.5.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -135,6 +132,10 @@
                     <repoToken>4TGqA2VzjDDJNHlvt6mWltXzRf2ft8c81
                     </repoToken>
                 </configuration>
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </dependency>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
