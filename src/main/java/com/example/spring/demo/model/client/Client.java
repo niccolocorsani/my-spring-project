@@ -12,14 +12,14 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 
 	@CheckRegularExperssion
-	public String firstName;
+	private String firstName;
 
-	public String lastName;
+	private String lastName;
 
-	public String userName;
+	private String userName;
 
 
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL,fetch=FetchType.EAGER) ///necessario fetch eager perchè se si chiude la sessione del controller prima che si carichi da errore
