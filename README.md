@@ -12,4 +12,4 @@ SonarCloud: [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=ni
 Coveralls: [![Coverage Status](https://coveralls.io/repos/github/niccolocorsani/my-spring-project/badge.svg)](https://coveralls.io/github/niccolocorsani/my-spring-project)
 
 Report: 
-[Bettini relazione.pdf](https://github.com/niccolocorsani/my-spring-project/files/8080532/Bettini.relazione.pdf)
+[relazione.pdf](https://github.com/niccolocorsani/my-spring-project/files/8080532/Bettini.relazione.pdf)
